@@ -1,16 +1,35 @@
 
 const mainInitialState = {
     isItemsPageEnabled: true,
-    ifGroupPageEnabled: false
-
+    isGroupPageEnabled: false,
+    inDineEnabled: true,
+    outDineEnabled: false
 }
 
 const mainReducer = (state = mainInitialState, action) => {
     switch (action.type) {
-        case "testCase":
+        case "itemsList":
             state = {
                 ...state,
-                test: action.payload
+                isItemsPageEnabled: action.payload
+            };
+            break;
+        case "foodGroup":
+            state = {
+                ...state,
+                isGroupPageEnabled: action.payload
+            };
+            break;
+        case "inDine":
+            state = {
+                ...state,
+                inDineEnabled: action.payload
+            };
+            break;
+        case "outDine":
+            state = {
+                ...state,
+                outDineEnabled: action.payload
             };
             break;
         default:
