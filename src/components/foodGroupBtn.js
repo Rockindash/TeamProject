@@ -2,17 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import FoodGroupBtn from '../components/foodGroupBtn';
 
-
-class Display extends React.Component {
+class FoodGroupBtn extends React.Component {
 
 
   render() {
     
     return (
       <Wrapper>
-        <FoodGroupBtn/>
+        
       </Wrapper>
     );
   }
@@ -40,9 +38,15 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 mapStateToProps,
 mapDispatchToProps
-)(Display);
+)(FoodGroupBtn);
 
 
 const Wrapper = styled.div`
-  
+    position: absolute;
+    right: 0px;
+    height: 800px;
+    width: 250px;
+    background-color: red;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 `;

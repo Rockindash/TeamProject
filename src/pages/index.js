@@ -31,5 +31,10 @@ class Index extends React.Component {
 export default Index
 
 const Wrapper = styled.div`
-
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
 `;
