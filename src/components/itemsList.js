@@ -2,25 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import ItemsForm from '../components/itemsForm';
-import FoodGroupBtn from '../components/foodGroupBtn';
-import ItemsGroupBtn from '../components/itemsGroupBtn';
-import MainContentContainer from '../components/mainContentContainer';
 
-
-class Display extends React.Component {
+class ItemsList extends React.Component {
 
 
   render() {
     
     return (
       <Wrapper>
-        {this.props.main.isFormEnabled &&
-          <ItemsForm/>
-        }
-        <FoodGroupBtn/>
-        <ItemsGroupBtn/>
-        <MainContentContainer/>
+          
       </Wrapper>
     );
   }
@@ -46,11 +36,16 @@ const mapDispatchToProps = dispatch => {
   
   
 export default connect(
-mapStateToProps,
-mapDispatchToProps
-)(Display);
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemsList);
 
 
 const Wrapper = styled.div`
-  
+    position: absolute;
+    top: 140px;
+    left: 65px;
+    width: 850px;
+    height: 480px;
+    background-color: green;
 `;
