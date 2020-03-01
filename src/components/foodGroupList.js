@@ -65,7 +65,7 @@ class FoodGroupList extends React.Component {
             </Card>
             <Card>
                 <ImageSection color="#EB5757">
-                    <ImageText color="#EB5757">GRAIN PRODUCTS</ImageText>
+                    <ImageText color="#EB5757">MEAT and ALTERNATIVES</ImageText>
                     <Image left="20px">
                     <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">

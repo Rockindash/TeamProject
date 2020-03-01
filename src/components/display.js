@@ -19,7 +19,7 @@ class Display extends React.Component {
           <ItemsForm/>
         }
         <FoodGroupBtn/>
-        <ItemsGroupBtn/>
+        <ItemsGroupBtn/> 
         <MainContentContainer/>
       </Wrapper>
     );
