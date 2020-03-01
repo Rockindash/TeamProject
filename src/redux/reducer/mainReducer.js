@@ -3,7 +3,8 @@ const mainInitialState = {
     isItemsPageEnabled: true,
     isGroupPageEnabled: false,
     inDineEnabled: true,
-    outDineEnabled: false
+    outDineEnabled: false,
+    isFormEnabled: false
 }
 
 const mainReducer = (state = mainInitialState, action) => {
@@ -30,6 +31,12 @@ const mainReducer = (state = mainInitialState, action) => {
             state = {
                 ...state,
                 outDineEnabled: action.payload
+            };
+            break;
+        case "form":
+            state = {
+                ...state,
+                isFormEnabled: action.payload
             };
             break;
         default:

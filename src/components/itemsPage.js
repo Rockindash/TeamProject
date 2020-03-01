@@ -8,6 +8,10 @@ import ToggleButton from '../components/toggleBtn';
 
 class ItemsPage extends React.Component {
 
+  openForm = () => {
+    this.props.handleForm(true)
+  };
+
   render() {
     
     return (
@@ -15,7 +19,7 @@ class ItemsPage extends React.Component {
             <h1>Items</h1>
             <ItemsList/>
             <ToggleButton/>
-            <AddBtn>
+            <AddBtn onClick={() => this.openForm()}>
                 <svg width="202" height="52" viewBox="0 0 202 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="2" y="2" width="200" height="50" rx="5" fill="#2D8CD8"/>
                     <rect width="200" height="50" rx="5" fill="#4AABF8"/>
@@ -36,10 +40,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setItems: data => {
+    handleForm: isEnabled => {
       dispatch({
-        type: 'testCase',
-        payload: data,
+        type: 'form',
+        payload: isEnabled,
       });
     }
   };
@@ -65,8 +69,8 @@ const Wrapper = styled.div`
 `;
 
 const AddBtn = styled.div`
-    position: absolute;
-    top: 670px;
-    left: 360px;
-    cursor: pointer;
+  position: absolute;
+  top: 670px;
+  left: 360px;
+  cursor: pointer;
 `;

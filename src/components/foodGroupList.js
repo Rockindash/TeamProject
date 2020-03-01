@@ -122,7 +122,6 @@ const Wrapper = styled.div`
     right: 70px;
     bottom: 0px;
     overflow: scroll;
-    background-color: yellow;
 `;
 
 const Card = styled.div`

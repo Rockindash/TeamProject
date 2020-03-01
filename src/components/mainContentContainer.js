@@ -55,7 +55,6 @@ const Wrapper = styled.div`
     top: 10px;
     height: 760px;
     width: 920px;
-    background-color: red;
 
     &.items {
         transform: translateX(0px);
