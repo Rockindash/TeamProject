@@ -13,6 +13,7 @@ class OutDiningForm extends React.Component {
 
     handleAdd = e => {
         this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
+        this.props.addSelectedState(false)
         this.props.handleForm(false)
     };
 
@@ -56,17 +57,17 @@ const mapDispatchToProps = dispatch => {
         payload: isEnabled,
       });
     },
-    setOutDineName: name => {
-        dispatch({
-          type: 'outDineName',
-          payload: name,
-        });
-    },
     addItem: items => {
         dispatch({
             type: 'outDiningArray',
             payload: items,
         });
+    },
+    addSelectedState: isSelected => {
+      dispatch({
+          type: 'selectedOutdineArray',
+          payload: isSelected,
+      });
     },
   };
 };

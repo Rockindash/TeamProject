@@ -7,10 +7,12 @@ class ItemsList extends React.Component {
 
   removeInDineItem = (index) => {
     this.props.removeFromInDineList(index)
+    this.props.removeSelectedFromInDineList(index)
   };
 
   removeOutDineItem = (index) => {
     this.props.removeFromOutDineList(index)
+    this.props.removeSelectedFromOutDineList(index)
   };
 
   render() {
@@ -28,6 +30,7 @@ class ItemsList extends React.Component {
             {this.props.items.inDiningList.map((item, index) => (
               <div>
                 <ItemWrapper>
+                  <Checkbox/>
                   <p>{item}</p>
                   <Back/>
                   <div className='closeBtn' onClick={() => this.removeInDineItem(index)}><p>X</p></div>
@@ -47,6 +50,7 @@ class ItemsList extends React.Component {
             {this.props.items.outDiningList.map((item, index) => (
               <div>
                 <ItemWrapper>
+                <Checkbox/>
                   <p>{item}</p>
                   <Back/>
                   <div className='closeBtn' onClick={() => this.removeOutDineItem(index)}><p>X</p></div>
@@ -76,12 +80,24 @@ const mapDispatchToProps = dispatch => {
         payload: index,
       });
     },
+    removeSelectedFromInDineList: index => {
+      dispatch({
+        type: 'removeSelectedArray',
+        payload: index,
+      });
+    },
     removeFromOutDineList: index => {
       dispatch({
         type: 'removeOutDineItem',
         payload: index,
       });
-    }
+    },
+    removeSelectedFromOutDineList: index => {
+      dispatch({
+        type: 'removeSelectedOutDineArray',
+        payload: index,
+      });
+    },
   };
 };
   
@@ -116,10 +132,9 @@ const ItemWrapper = styled.div`
     height: 50px;
     cursor: pointer;
     border-radius: 10px;
-    background-color: #F0F0F0;
 
     p{
-      margin-left: 32px;
+      margin-left: 52px;
       margin-top: 10px;
       z-index: 15;
       position: absolute;
@@ -161,6 +176,16 @@ const ItemWrapper = styled.div`
         }
       }
     }
+`;
+
+const Checkbox = styled.div`
+position: relative;
+    top: 30px;
+    left: 20px;
+    height: 14px;
+    width: 14px;
+    z-index: 20;
+    border: 2px solid black;  
 `;
 
 const Back = styled.div`

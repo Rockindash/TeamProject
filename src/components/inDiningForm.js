@@ -13,6 +13,7 @@ class InDiningForm extends React.Component {
 
     handleAdd = e => {
         this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
+        this.props.addSelectedState(false)
         this.props.handleForm(false)
     };
 
@@ -61,6 +62,12 @@ const mapDispatchToProps = dispatch => {
             type: 'inDiningArray',
             payload: items,
         });
+    },
+    addSelectedState: isSelected => {
+      dispatch({
+          type: 'selectedArray',
+          payload: isSelected,
+      });
     },
   };
 };

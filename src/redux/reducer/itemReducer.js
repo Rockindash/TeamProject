@@ -1,13 +1,14 @@
 
 const itemsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
-    inDineSelectedState: [false,false,false,false,false,false,false,false,false,false],
+    inDineFinalItem: [],
     inDineGroup: ["Grain","Milk","Meat","Grain","Veg","Milk","Veg","Grain","Meat","Veg"],
     selectedIndex: 0,
     isDropdownEnabled: false,
-    outDineName: "",
     inDiningList: [],
+    inDineSelectedState: [],
     outDiningList: [],
+    outDineSelectedState: [],
 }
 
 const itemsReducer = (state = itemsInitialState, action) => {
@@ -30,12 +31,6 @@ const itemsReducer = (state = itemsInitialState, action) => {
                 isDropdownEnabled: action.payload
             };
             break;
-        case "outDineName":
-            state = {
-                ...state,
-                outDineName: action.payload
-            };
-            break;
         case "inDiningArray":
             state = {
                 ...state,
@@ -51,6 +46,20 @@ const itemsReducer = (state = itemsInitialState, action) => {
                   ]
             }
             break;
+        case "selectedArray":
+            state = {
+                ...state,
+                inDineSelectedState: state.inDineSelectedState.concat(action.payload)
+            };
+            break;
+        case "removeSelectedArray":
+            return {...state,
+                inDineSelectedState: [
+                    ...state.inDineSelectedState.slice(0, action.payload),
+                    ...state.inDineSelectedState.slice(action.payload + 1)
+                  ]
+            }
+            break;
         case "outDiningArray":
             state = {
                 ...state,
@@ -63,6 +72,20 @@ const itemsReducer = (state = itemsInitialState, action) => {
                 outDiningList: [
                     ...state.outDiningList.slice(0, action.payload),
                     ...state.outDiningList.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "selectedOutdineArray":
+            state = {
+                ...state,
+                outDineSelectedState: state.outDineSelectedState.concat(action.payload)
+            };
+            break;
+        case "removeSelectedOutDineArray":
+            return {...state,
+                outDineSelectedState: [
+                    ...state.outDineSelectedState.slice(0, action.payload),
+                    ...state.outDineSelectedState.slice(action.payload + 1)
                   ]
             }
             break;
