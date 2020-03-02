@@ -60,6 +60,12 @@ const itemsReducer = (state = itemsInitialState, action) => {
                   ]
             }
             break;
+        case "modifySelectedArray":
+            state = {
+                ...state,
+                inDineSelectedState: action.payload
+            };
+            break;
         case "outDiningArray":
             state = {
                 ...state,
@@ -88,6 +94,12 @@ const itemsReducer = (state = itemsInitialState, action) => {
                     ...state.outDineSelectedState.slice(action.payload + 1)
                   ]
             }
+            break;
+        case "modifySelectedOutDineArray":
+            state = {
+                ...state,
+                outDineSelectedState: action.payload
+            };
             break;
         default:
 			return state;
