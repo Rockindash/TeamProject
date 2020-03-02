@@ -2,25 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import ItemsForm from '../components/itemsForm';
-import FoodGroupBtn from '../components/foodGroupBtn';
-import ItemsGroupBtn from '../components/itemsGroupBtn';
-import MainContentContainer from '../components/mainContentContainer';
+import InDiningForm from '../components/inDiningForm';
+import OutDiningForm from '../components/outDiningForm';
 
-
-class Display extends React.Component {
+class ItemsForm extends React.Component {
 
 
   render() {
     
     return (
       <Wrapper>
-        {this.props.main.isFormEnabled &&
-          <ItemsForm/>
+        {this.props.main.inDineEnabled &&
+            <InDiningForm/>
         }
-        <FoodGroupBtn/>
-        <ItemsGroupBtn/> 
-        <MainContentContainer/>
+        {this.props.main.outDineEnabled &&
+            <OutDiningForm/>
+        }
       </Wrapper>
     );
   }
@@ -48,9 +45,12 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 mapStateToProps,
 mapDispatchToProps
-)(Display);
+)(ItemsForm);
 
 
 const Wrapper = styled.div`
-  
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
 `;
