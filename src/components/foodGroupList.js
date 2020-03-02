@@ -30,6 +30,11 @@ class FoodGroupList extends React.Component {
                         </svg>
                     </Image>
                 </ImageSection>
+                <TextSection>
+                    {this.props.items.milkGroup.map((item, index) => (
+                        <p>{item}</p>
+                    ))}
+                </TextSection>
             </Card>
             <Card>
                 <ImageSection color="#A4AB38">
@@ -40,6 +45,11 @@ class FoodGroupList extends React.Component {
                     </svg>
                     </Image>
                 </ImageSection>
+                <TextSection>
+                    {this.props.items.vegGroup.map((item, index) => (
+                        <p>{item}</p>
+                    ))}
+                </TextSection>
             </Card>
             <Card>
                 <ImageSection color="#B58235">
@@ -62,6 +72,11 @@ class FoodGroupList extends React.Component {
                     </svg>
                     </Image>
                 </ImageSection>
+                <TextSection>
+                    {this.props.items.grainGroup.map((item, index) => (
+                        <p>{item}</p>
+                    ))}
+                </TextSection>
             </Card>
             <Card>
                 <ImageSection color="#EB5757">
@@ -84,6 +99,11 @@ class FoodGroupList extends React.Component {
                     </svg>
                     </Image>
                 </ImageSection>
+                <TextSection>
+                    {this.props.items.meatGroup.map((item, index) => (
+                        <p>{item}</p>
+                    ))}
+                </TextSection>
             </Card>
         </Wrapper>
     );
@@ -93,7 +113,8 @@ class FoodGroupList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    main: state.main
+    main: state.main,
+    items: state.items
   };
 };
 
@@ -160,4 +181,23 @@ const Image = styled.p`
     position: absolute;
     margin-left: ${props => props.left};
     margin-top: 90px;
+`;
+
+const TextSection = styled.p`
+    position: relative;
+    height: 100%;
+    width: 400px;
+    margin-left: 200px;
+    overflow-y: scroll;
+
+    p{
+        position: relative;
+        right: -20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial;
+        color: black;
+      }
 `;

@@ -8,16 +8,55 @@ class ItemsList extends React.Component {
   removeInDineItem = (index) => {
     this.props.removeFromInDineList(index)
     this.props.removeSelectedFromInDineList(index)
-
-    //Add to Food Group
-    
   };
 
-  handleInDineSelection = (index) => {
+  handleInDineSelection = (index, item) => {
     var array = []
     array = this.props.items.inDineSelectedState
     array[index] = !this.props.items.inDineSelectedState[index]
     this.props.setInDineSelected(array)
+
+    //Add to food group
+    var num = this.props.items.inDineName.indexOf(item)
+
+    //Remove From Group
+    if(!this.props.items.inDineSelectedState[index]){
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          var innerNum = this.props.items.milkGroup.indexOf(item)
+          this.props.removeFromMilk(innerNum)
+          break;
+        case 1:
+          var innerNum = this.props.items.vegGroup.indexOf(item)
+          this.props.removeFromVeg(innerNum)
+          break;
+        case 2:
+          var innerNum = this.props.items.grainGroup.indexOf(item)
+          this.props.removeFromGrain(innerNum)
+          break;
+        case 3:
+          var innerNum = this.props.items.meatGroup.indexOf(item)
+          this.props.removeFromMeat(innerNum)
+          break;
+        default:
+      }
+    }else{
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          this.props.addToMilk(item)
+          break;
+        case 1:
+          this.props.addToVeg(item)
+          break;
+        case 2:
+          this.props.addToGrain(item)
+          break;
+        case 3:
+          this.props.addToMeat(item)
+          break;
+      default:
+      }
+    }
   };
 
   removeOutDineItem = (index) => {
@@ -25,11 +64,52 @@ class ItemsList extends React.Component {
     this.props.removeSelectedFromOutDineList(index)
   };
 
-  handleOutDineSelection = (index) => {
+  handleOutDineSelection = (index, item) => {
     var array = []
     array = this.props.items.outDineSelectedState
     array[index] = !this.props.items.outDineSelectedState[index]
     this.props.setOutDineSelected(array)
+
+    //Add to food group
+    var num = this.props.items.inDineName.indexOf(item)
+
+    if(!this.props.items.outDineSelectedState[index]){
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          var innerNum = this.props.items.milkGroup.indexOf(item)
+          this.props.removeFromMilk(innerNum)
+          break;
+        case 1:
+          var innerNum = this.props.items.vegGroup.indexOf(item)
+          this.props.removeFromVeg(innerNum)
+          break;
+        case 2:
+          var innerNum = this.props.items.grainGroup.indexOf(item)
+          this.props.removeFromGrain(innerNum)
+          break;
+        case 3:
+          var innerNum = this.props.items.meatGroup.indexOf(item)
+          this.props.removeFromMeat(innerNum)
+          break;
+        default:
+      }
+    }else{
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          this.props.addToMilk(item)
+          break;
+        case 1:
+          this.props.addToVeg(item)
+          break;
+        case 2:
+          this.props.addToGrain(item)
+          break;
+        case 3:
+          this.props.addToMeat(item)
+          break;
+      default:
+    }
+    }
   };
 
   render() {
@@ -46,7 +126,7 @@ class ItemsList extends React.Component {
             )}
             {this.props.items.inDiningList.map((item, index) => (
               <div>
-                <InDineItemWrapper className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleInDineSelection(index)}>
+                <InDineItemWrapper className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleInDineSelection(index,item)}>
                   <InDineCheckbox className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}/>
                   <p>{item}</p>
                   <InDineBack className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}/>
@@ -66,7 +146,7 @@ class ItemsList extends React.Component {
             )}
             {this.props.items.outDiningList.map((item, index) => (
               <div>
-                <OutDineItemWrapper className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleOutDineSelection(index)}>
+                <OutDineItemWrapper className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleOutDineSelection(index, item)}>
                 <OutDineCheckbox className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}/>
                   <p>{item}</p>
                   <OutDineBack className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}/>
@@ -124,6 +204,54 @@ const mapDispatchToProps = dispatch => {
     setOutDineSelected: array => {
       dispatch({
         type: 'modifySelectedOutDineArray',
+        payload: array,
+      });
+    },
+    addToMilk: array => {
+      dispatch({
+        type: 'milkGroup',
+        payload: array,
+      });
+    },
+    addToVeg: array => {
+      dispatch({
+        type: 'vegGroup',
+        payload: array,
+      });
+    },
+    addToGrain: array => {
+      dispatch({
+        type: 'grainGroup',
+        payload: array,
+      });
+    },
+    addToMeat: array => {
+      dispatch({
+        type: 'meatGroup',
+        payload: array,
+      });
+    },
+    removeFromMilk: array => {
+      dispatch({
+        type: 'milkGroupRemove',
+        payload: array,
+      });
+    },
+    removeFromVeg: array => {
+      dispatch({
+        type: 'vegGroupRemove',
+        payload: array,
+      });
+    },
+    removeFromGrain: array => {
+      dispatch({
+        type: 'grainGroupRemove',
+        payload: array,
+      });
+    },
+    removeFromMeat: array => {
+      dispatch({
+        type: 'meatGroupRemove',
         payload: array,
       });
     },

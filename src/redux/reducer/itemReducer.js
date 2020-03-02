@@ -2,13 +2,17 @@
 const itemsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
     inDineFinalItem: [],
-    inDineGroup: ["Grain","Milk","Meat","Grain","Veg","Milk","Veg","Grain","Meat","Veg"],
+    inDineGroup: [2,0,3,2,1,0,1,2,3,1],
     selectedIndex: 0,
     isDropdownEnabled: false,
     inDiningList: [],
     inDineSelectedState: [],
     outDiningList: [],
     outDineSelectedState: [],
+    milkGroup: [],
+    vegGroup: [],
+    grainGroup: [],
+    meatGroup: []
 }
 
 const itemsReducer = (state = itemsInitialState, action) => {
@@ -100,6 +104,62 @@ const itemsReducer = (state = itemsInitialState, action) => {
                 ...state,
                 outDineSelectedState: action.payload
             };
+            break;
+        case "milkGroup":
+            state = {
+                ...state,
+                milkGroup: state.milkGroup.concat(action.payload)
+            };
+            break;
+        case "vegGroup":
+            state = {
+                ...state,
+                vegGroup: state.vegGroup.concat(action.payload)
+            };
+            break;
+        case "grainGroup":
+            state = {
+                ...state,
+                grainGroup: state.grainGroup.concat(action.payload)
+            };
+            break;
+        case "meatGroup":
+            state = {
+                ...state,
+                meatGroup: state.meatGroup.concat(action.payload)
+            };
+            break;
+        case "milkGroupRemove":
+            return {...state,
+                milkGroup: [
+                    ...state.milkGroup.slice(0, action.payload),
+                    ...state.milkGroup.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "vegGroupRemove":
+            return {...state,
+                vegGroup: [
+                    ...state.vegGroup.slice(0, action.payload),
+                    ...state.vegGroup.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "grainGroupRemove":
+            return {...state,
+                grainGroup: [
+                    ...state.grainGroup.slice(0, action.payload),
+                    ...state.grainGroup.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "meatGroupRemove":
+            return {...state,
+                meatGroup: [
+                    ...state.meatGroup.slice(0, action.payload),
+                    ...state.meatGroup.slice(action.payload + 1)
+                  ]
+            }
             break;
         default:
 			return state;
