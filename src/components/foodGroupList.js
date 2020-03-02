@@ -31,6 +31,9 @@ class FoodGroupList extends React.Component {
                     </Image>
                 </ImageSection>
                 <TextSection>
+                    {(this.props.items.milkGroup.length == 0) &&
+                        <p>Empty List....</p>
+                    }
                     {this.props.items.milkGroup.map((item, index) => (
                         <p>{item}</p>
                     ))}
@@ -46,6 +49,9 @@ class FoodGroupList extends React.Component {
                     </Image>
                 </ImageSection>
                 <TextSection>
+                    {(this.props.items.vegGroup.length == 0) &&
+                        <p>Empty List....</p>
+                    }
                     {this.props.items.vegGroup.map((item, index) => (
                         <p>{item}</p>
                     ))}
@@ -73,6 +79,9 @@ class FoodGroupList extends React.Component {
                     </Image>
                 </ImageSection>
                 <TextSection>
+                    {(this.props.items.grainGroup.length == 0) &&
+                        <p>Empty List....</p>
+                    }
                     {this.props.items.grainGroup.map((item, index) => (
                         <p>{item}</p>
                     ))}
@@ -100,6 +109,9 @@ class FoodGroupList extends React.Component {
                     </Image>
                 </ImageSection>
                 <TextSection>
+                    {(this.props.items.meatGroup.length == 0) &&
+                        <p>Empty List....</p>
+                    }
                     {this.props.items.meatGroup.map((item, index) => (
                         <p>{item}</p>
                     ))}
@@ -199,5 +211,5 @@ const TextSection = styled.p`
         font-weight: bold;
         font-family: Arial;
         color: black;
-      }
+    }
 `;
