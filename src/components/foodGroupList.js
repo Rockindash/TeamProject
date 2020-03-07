@@ -200,6 +200,7 @@ const TextSection = styled.p`
     height: 100%;
     width: 400px;
     margin-left: 200px;
+    overflow-x: hidden;
     overflow-y: scroll;
 
     p{
