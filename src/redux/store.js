@@ -7,7 +7,7 @@ import rootReducer from "./rootReducer";
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ["items","main"]
+    blacklist: ["items","main","field"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

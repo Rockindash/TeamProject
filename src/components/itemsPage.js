@@ -10,6 +10,14 @@ class ItemsPage extends React.Component {
 
   openForm = () => {
     this.props.handleForm(true)
+
+    //Setting Date
+    var currentHour = new Date().getHours();
+    var currentMin = new Date().getMinutes();
+    var currentDate = new Date().getDate();
+    var currentMonth = new Date().getMonth();
+    var currentYear = new Date().getFullYear();
+    this.props.setDate(currentDate + "-" + currentMonth + "-" + currentYear + ", " + currentHour + ":" + currentMin)
   };
 
   render() {
@@ -44,6 +52,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: 'form',
         payload: isEnabled,
+      });
+    },
+    setDate: date => {
+      dispatch({
+        type: 'date',
+        payload: date,
       });
     }
   };

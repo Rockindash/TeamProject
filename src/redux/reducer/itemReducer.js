@@ -12,7 +12,8 @@ const itemsInitialState = {
     milkGroup: [],
     vegGroup: [],
     grainGroup: [],
-    meatGroup: []
+    meatGroup: [],
+    isInfoScreenEnabled: false
 }
 
 const itemsReducer = (state = itemsInitialState, action) => {
@@ -160,6 +161,12 @@ const itemsReducer = (state = itemsInitialState, action) => {
                     ...state.meatGroup.slice(action.payload + 1)
                   ]
             }
+            break;
+        case "info":
+            state = {
+                ...state,
+                isInfoScreenEnabled: action.payload
+            };
             break;
         default:
 			return state;

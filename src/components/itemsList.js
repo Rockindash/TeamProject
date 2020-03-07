@@ -8,6 +8,7 @@ class ItemsList extends React.Component {
   removeInDineItem = (index) => {
     this.props.removeFromInDineList(index)
     this.props.removeSelectedFromInDineList(index)
+    this.props.removeTimeStamp(index)
   };
 
   handleInDineSelection = (index, item) => {
@@ -59,9 +60,15 @@ class ItemsList extends React.Component {
     }
   };
 
+  showInfo = (index) => {
+    this.props.setIndex(index)
+    this.props.toggleInfoScreen(!this.props.items.isInfoScreenEnabled)
+  };
+
   removeOutDineItem = (index) => {
     this.props.removeFromOutDineList(index)
     this.props.removeSelectedFromOutDineList(index)
+    this.props.removeOutDineTimeStamp(index)
   };
 
   handleOutDineSelection = (index, item) => {
@@ -126,11 +133,12 @@ class ItemsList extends React.Component {
             )}
             {this.props.items.inDiningList.map((item, index) => (
               <div>
-                <InDineItemWrapper className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleInDineSelection(index,item)}>
-                  <InDineCheckbox className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}/>
+                <InDineItemWrapper className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}>
+                  <InDineCheckbox className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleInDineSelection(index,item)}/>
                   <p>{item}</p>
                   <InDineBack className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}/>
                   <div className='closeBtn' onClick={() => this.removeInDineItem(index)}><p>X</p></div>
+                  <div className='infoBtn' onClick={() => this.showInfo(index)}><p>More Information</p></div>
                 </InDineItemWrapper>
               </div>
             ))}
@@ -146,11 +154,12 @@ class ItemsList extends React.Component {
             )}
             {this.props.items.outDiningList.map((item, index) => (
               <div>
-                <OutDineItemWrapper className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleOutDineSelection(index, item)}>
-                <OutDineCheckbox className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}/>
+                <OutDineItemWrapper className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}>
+                <OutDineCheckbox className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleOutDineSelection(index, item)}/>
                   <p>{item}</p>
                   <OutDineBack className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}/>
                   <div className='closeBtn' onClick={() => this.removeOutDineItem(index)}><p>X</p></div>
+                  <div className='infoBtn' onClick={() => this.showInfo(index)}><p>More Information</p></div>
                 </OutDineItemWrapper>
               </div>
             ))}
@@ -255,6 +264,30 @@ const mapDispatchToProps = dispatch => {
         payload: array,
       });
     },
+    removeTimeStamp: index => {
+      dispatch({
+        type: 'removeInDineTime',
+        payload: index,
+      });
+    },
+    removeOutDineTimeStamp: index => {
+      dispatch({
+        type: 'removeOutDineTime',
+        payload: index,
+      });
+    },
+    setIndex: index => {
+      dispatch({
+        type: 'index',
+        payload: index,
+      });
+    },
+    toggleInfoScreen: isEnabled => {
+      dispatch({
+        type: 'info',
+        payload: isEnabled,
+      });
+    },
   };
 };
   
@@ -283,7 +316,7 @@ const Wrapper = styled.div`
 
 const InDineItemWrapper = styled.div`
     position: realtive;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 0px;
     width: 250px;
     height: 50px;
@@ -323,12 +356,38 @@ const InDineItemWrapper = styled.div`
           color: white;
         }
       }
+
+      &.infoBtn {
+        position: absolute;
+        margin-left: 0px;
+        z-index: 5;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #287BBD;
+        transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+        p{
+          position: absolute;
+          margin-left: 70px;
+          margin-top: 18px;
+          font-size: 15px;
+          font-weight: bold;
+          font-family: Arial;
+          color: white;
+        }
+      }
     }
 
     &:hover {
       div{
         &.closeBtn {
           transform: translatex(50px);
+          transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        &.infoBtn {
+          transform: translateY(30px);
           transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
       }
@@ -373,7 +432,7 @@ const InDineBack = styled.div`
 
 const OutDineItemWrapper = styled.div`
     position: realtive;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 0px;
     width: 250px;
     height: 50px;
@@ -413,12 +472,37 @@ const OutDineItemWrapper = styled.div`
           color: white;
         }
       }
+      &.infoBtn {
+        position: absolute;
+        margin-left: 0px;
+        z-index: 5;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #287BBD;
+        transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+        p{
+          position: absolute;
+          margin-left: 70px;
+          margin-top: 18px;
+          font-size: 15px;
+          font-weight: bold;
+          font-family: Arial;
+          color: white;
+        }
+      }
     }
 
     &:hover {
       div{
         &.closeBtn {
           transform: translatex(50px);
+          transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        &.infoBtn {
+          transform: translateY(30px);
           transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
       }

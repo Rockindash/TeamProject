@@ -13,6 +13,7 @@ class OutDiningForm extends React.Component {
 
     handleAdd = e => {
         this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
+        this.props.addTime(this.props.field.currentDate)
         this.props.addSelectedState(false)
         this.props.handleForm(false)
     };
@@ -36,6 +37,10 @@ class OutDiningForm extends React.Component {
                 <h1>Name</h1>
                 <DropdownWrapper><NameDropdown/></DropdownWrapper>
             </NameWrapper>
+            <TimeWrapper>
+                <h1>Time</h1>
+                <DropdownWrapperTime><p>{this.props.field.currentDate}</p></DropdownWrapperTime>
+            </TimeWrapper>
         </Form>
       </Wrapper>
     );
@@ -45,7 +50,8 @@ class OutDiningForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items
+    items: state.items,
+    field: state.field
   };
 };
 
@@ -67,6 +73,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
           type: 'selectedOutdineArray',
           payload: isSelected,
+      });
+    },
+    addTime: time => {
+      dispatch({
+          type: 'outDineTime',
+          payload: time,
       });
     },
   };
@@ -149,10 +161,42 @@ const NameWrapper = styled.h1`
     }
 `;
 
+const TimeWrapper = styled.h1`
+
+    h1{
+        position: absolute;
+        margin-left: 0px;
+        margin-top: 220px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial;
+        color: black;
+    }
+`;
+
 const DropdownWrapper = styled.div`
   position: absolute;
   width: 400px;
   height: 40px;
   border-radius: 5px;
   margin-top: 150px;
+`;
+
+const DropdownWrapperTime = styled.div`
+  position: absolute;
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 250px;
+  border: 2px solid black;
+
+  p{
+    position: relative;
+    margin-top: 7px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+    color: black;
+  }
 `;
