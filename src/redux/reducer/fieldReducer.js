@@ -2,7 +2,10 @@
 const fieldsInitialState = {
     inDineNameTimeStamp: [],
     outDineNameTimeStamp: [],
-    currentDate: ''
+    currentDate: '',
+    inDineUnit: [],
+    outDineUnit: [],
+    quantity: 1
 }
 
 const fieldsReducer = (state = fieldsInitialState, action) => {
@@ -41,6 +44,42 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
             state = {
                 ...state,
                 currentDate: action.payload
+            };
+            break;
+        case "inDineUnit":
+            state = {
+                ...state,
+                inDineUnit: state.inDineUnit.concat(action.payload)
+            };
+            break;
+        case "outDineUnit":
+            state = {
+                ...state,
+                outDineUnit: state.outDineUnit.concat(action.payload)
+            };
+            break;
+        case "removeInDineUnit":
+            return {...state,
+                // adImagePaths: state.adImagePaths.filter((_, index) => index != action.payload)
+                inDineUnit: [
+                    ...state.inDineUnit.slice(0, action.payload),
+                    ...state.inDineUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "removeOutDineUnit":
+            return {...state,
+                // adImagePaths: state.adImagePaths.filter((_, index) => index != action.payload)
+                outDineUnit: [
+                    ...state.outDineUnit.slice(0, action.payload),
+                    ...state.outDineUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "number":
+            state = {
+                ...state,
+                quantity: action.payload
             };
             break;
         default:

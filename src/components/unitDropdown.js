@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 
-class NameDropdown extends React.Component {
+class UnitDropdown extends React.Component {
 
     handleDropdown = () => {
-        this.props.enableDropdown(!this.props.items.isDropdownEnabled)
+        this.props.enableDropdown(!this.props.items.isUnitDropdownEnabled)
     };
 
     handleSelectedItem = (index) => {
@@ -17,9 +17,9 @@ class NameDropdown extends React.Component {
   render() {
     
     return (
-      <Wrapper className={this.props.items.isDropdownEnabled ? 'enabled' : 'disabled'}>
-          <Selected onClick={() => this.handleDropdown()}><p>{this.props.items.inDineName[this.props.items.selectedIndex]}</p></Selected>
-          {this.props.items.inDineName.map((item, index) => (
+      <Wrapper className={this.props.items.isUnitDropdownEnabled ? 'enabled' : 'disabled'}>
+          <Selected onClick={() => this.handleDropdown()}><p>{this.props.items.unitName[this.props.items.selectedUnitIndex]}</p></Selected>
+          {this.props.items.unitName.map((item, index) => (
             <div>
               <ItemWrapper onClick={() => this.handleSelectedItem(index)}>
                 <p>{item}</p>
@@ -42,16 +42,16 @@ const mapDispatchToProps = dispatch => {
   return {
     enableDropdown: isEnabled => {
       dispatch({
-        type: 'isDropdownEnabled',
+        type: 'unitDropdown',
         payload: isEnabled,
       });
     },
     selectedIndex: index => {
         dispatch({
-          type: 'index',
+          type: 'unitIndex',
           payload: index,
         });
-    }
+    },
   };
 };
   
@@ -59,7 +59,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 mapStateToProps,
 mapDispatchToProps
-)(NameDropdown);
+)(UnitDropdown);
 
 
 const Wrapper = styled.div`

@@ -9,6 +9,7 @@ class ItemsList extends React.Component {
     this.props.removeFromInDineList(index)
     this.props.removeSelectedFromInDineList(index)
     this.props.removeTimeStamp(index)
+    this.props.removeInDineUnit(index)
   };
 
   handleInDineSelection = (index, item) => {
@@ -69,6 +70,7 @@ class ItemsList extends React.Component {
     this.props.removeFromOutDineList(index)
     this.props.removeSelectedFromOutDineList(index)
     this.props.removeOutDineTimeStamp(index)
+    this.props.removeOutDineUnit(index)
   };
 
   handleOutDineSelection = (index, item) => {
@@ -288,6 +290,18 @@ const mapDispatchToProps = dispatch => {
         payload: isEnabled,
       });
     },
+    removeInDineUnit: index => {
+      dispatch({
+        type: 'removeInDineUnit',
+        payload: index,
+      });
+    },
+    removeOutDineUnit: index => {
+      dispatch({
+        type: 'removeOutDineUnit',
+        payload: index,
+      });
+    },
   };
 };
   
@@ -371,7 +385,7 @@ const InDineItemWrapper = styled.div`
         p{
           position: absolute;
           margin-left: 70px;
-          margin-top: 18px;
+          margin-top: 20px;
           font-size: 15px;
           font-weight: bold;
           font-family: Arial;
@@ -486,7 +500,7 @@ const OutDineItemWrapper = styled.div`
         p{
           position: absolute;
           margin-left: 70px;
-          margin-top: 18px;
+          margin-top: 20px;
           font-size: 15px;
           font-weight: bold;
           font-family: Arial;

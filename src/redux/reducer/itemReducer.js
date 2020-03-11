@@ -13,7 +13,10 @@ const itemsInitialState = {
     vegGroup: [],
     grainGroup: [],
     meatGroup: [],
-    isInfoScreenEnabled: false
+    isInfoScreenEnabled: false,
+    isUnitDropdownEnabled: false,
+    unitName: ["Piece","Cup","Gms","Bowl"],
+    selectedUnitIndex: 0,
 }
 
 const itemsReducer = (state = itemsInitialState, action) => {
@@ -166,6 +169,18 @@ const itemsReducer = (state = itemsInitialState, action) => {
             state = {
                 ...state,
                 isInfoScreenEnabled: action.payload
+            };
+            break;
+        case "unitDropdown":
+            state = {
+                ...state,
+                isUnitDropdownEnabled: action.payload
+            };
+            break;
+        case "unitIndex":
+            state = {
+                ...state,
+                selectedUnitIndex: action.payload
             };
             break;
         default:
