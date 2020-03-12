@@ -1,7 +1,6 @@
 
 const itemsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
-    // itemMultiplier: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
     inDineFinalItem: [],
     inDineGroup: [2,0,3,2,1,0,1,2,3,1],
     selectedIndex: 0,
@@ -18,6 +17,18 @@ const itemsInitialState = {
     isUnitDropdownEnabled: false,
     unitName: ["Piece","Cup","Gms","Bowl"],
     selectedUnitIndex: 0,
+    milkGroupUnit: [],
+    vegGroupUnit: [],
+    grainGroupUnit: [],
+    meatGroupUnit: [],
+    milkGroupQuantity: [],
+    vegGroupQuantity: [],
+    grainGroupQuantity: [],
+    meatGroupQuantity: [],
+    milkSum: 0,
+    vegSum: 0,
+    grainSum: 0,
+    meatSum: 0,
 }
 
 const itemsReducer = (state = itemsInitialState, action) => {
@@ -166,6 +177,118 @@ const itemsReducer = (state = itemsInitialState, action) => {
                   ]
             }
             break;
+        case "milkGroupUnitAdd":
+            state = {
+                ...state,
+                milkGroupUnit: state.milkGroupUnit.concat(action.payload)
+            };
+            break;
+        case "vegGroupUnitAdd":
+            state = {
+                ...state,
+                vegGroupUnit: state.vegGroupUnit.concat(action.payload)
+            };
+            break;
+        case "grainGroupUnitAdd":
+            state = {
+                ...state,
+                grainGroupUnit: state.grainGroupUnit.concat(action.payload)
+            };
+            break;
+        case "meatGroupUnitAdd":
+            state = {
+                ...state,
+                meatGroupUnit: state.meatGroupUnit.concat(action.payload)
+            };
+            break;
+        case "milkGroupUnitRemove":
+            return {...state,
+                milkGroupUnit: [
+                    ...state.milkGroupUnit.slice(0, action.payload),
+                    ...state.milkGroupUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "vegGroupUnitRemove":
+            return {...state,
+                vegGroupUnit: [
+                    ...state.vegGroupUnit.slice(0, action.payload),
+                    ...state.vegGroupUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "grainGroupUnitRemove":
+            return {...state,
+                grainGroupUnit: [
+                    ...state.grainGroupUnit.slice(0, action.payload),
+                    ...state.grainGroupUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "meatGroupUnitRemove":
+            return {...state,
+                meatGroupUnit: [
+                    ...state.meatGroupUnit.slice(0, action.payload),
+                    ...state.meatGroupUnit.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "milkGroupQuantityAdd":
+            state = {
+                ...state,
+                milkGroupQuantity: state.milkGroupQuantity.concat(action.payload)
+            };
+            break;
+        case "vegGroupQuantityAdd":
+            state = {
+                ...state,
+                vegGroupQuantity: state.vegGroupQuantity.concat(action.payload)
+            };
+            break;
+        case "grainGroupQuantityAdd":
+            state = {
+                ...state,
+                grainGroupQuantity: state.grainGroupQuantity.concat(action.payload)
+            };
+            break;
+        case "meatGroupQuantityAdd":
+            state = {
+                ...state,
+                meatGroupQuantity: state.meatGroupQuantity.concat(action.payload)
+            };
+            break;
+        case "milkGroupQuantityRemove":
+            return {...state,
+                milkGroupQuantity: [
+                    ...state.milkGroupQuantity.slice(0, action.payload),
+                    ...state.milkGroupQuantity.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "vegGroupQuantityRemove":
+            return {...state,
+                vegGroupQuantity: [
+                    ...state.vegGroupQuantity.slice(0, action.payload),
+                    ...state.vegGroupQuantity.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "grainGroupQuantityRemove":
+            return {...state,
+                grainGroupQuantity: [
+                    ...state.grainGroupQuantity.slice(0, action.payload),
+                    ...state.grainGroupQuantity.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "meatGroupQuantityRemove":
+            return {...state,
+                meatGroupQuantity: [
+                    ...state.meatGroupQuantity.slice(0, action.payload),
+                    ...state.meatGroupQuantity.slice(action.payload + 1)
+                  ]
+            }
+            break;
         case "info":
             state = {
                 ...state,
@@ -182,6 +305,30 @@ const itemsReducer = (state = itemsInitialState, action) => {
             state = {
                 ...state,
                 selectedUnitIndex: action.payload
+            };
+            break;
+        case "milkAmount":
+            state = {
+                ...state,
+                milkSum: action.payload
+            };
+            break;
+        case "vegAmount":
+            state = {
+                ...state,
+                vegSum: action.payload
+            };
+            break;
+        case "grainAmount":
+            state = {
+                ...state,
+                grainSum: action.payload
+            };
+            break;
+        case "meatAmount":
+            state = {
+                ...state,
+                meatSum: action.payload
             };
             break;
         default:

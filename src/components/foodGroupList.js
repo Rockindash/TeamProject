@@ -38,6 +38,12 @@ class FoodGroupList extends React.Component {
                         <p>{item}</p>
                     ))}
                 </TextSection>
+                <CountSection color="#48B19E">
+                    <p>({this.props.items.milkSum}/250) gms</p>
+                </CountSection>
+                {(this.props.items.milkSum >= 250) &&
+                    <Check><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M19.0683 4.57652C18.6778 4.186 18.0446 4.186 17.6541 4.57652L9.17453 13.0561L6.34498 10.2265C5.95445 9.836 5.32129 9.836 4.93076 10.2265L2.80827 12.349C2.41775 12.7395 2.41775 13.3727 2.80827 13.7632L5.63783 16.5928L5.63327 16.5973L8.46287 19.4269C8.85339 19.8175 9.48656 19.8175 9.87708 19.4269L21.1908 8.11323C21.5813 7.7227 21.5813 7.08954 21.1908 6.69901L19.0683 4.57652Z" fill="#4a90e2"></path></svg></Check>
+                }
             </Card>
             <Card>
                 <ImageSection color="#A4AB38">
@@ -56,6 +62,12 @@ class FoodGroupList extends React.Component {
                         <p>{item}</p>
                     ))}
                 </TextSection>
+                <CountSection color="#A4AB38">
+                    <p>({this.props.items.vegSum}/400) gms</p>
+                </CountSection>
+                {(this.props.items.vegSum >= 400) &&
+                    <Check><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M19.0683 4.57652C18.6778 4.186 18.0446 4.186 17.6541 4.57652L9.17453 13.0561L6.34498 10.2265C5.95445 9.836 5.32129 9.836 4.93076 10.2265L2.80827 12.349C2.41775 12.7395 2.41775 13.3727 2.80827 13.7632L5.63783 16.5928L5.63327 16.5973L8.46287 19.4269C8.85339 19.8175 9.48656 19.8175 9.87708 19.4269L21.1908 8.11323C21.5813 7.7227 21.5813 7.08954 21.1908 6.69901L19.0683 4.57652Z" fill="#4a90e2"></path></svg></Check>
+                }
             </Card>
             <Card>
                 <ImageSection color="#B58235">
@@ -86,6 +98,12 @@ class FoodGroupList extends React.Component {
                         <p>{item}</p>
                     ))}
                 </TextSection>
+                <CountSection color="#B58235">
+                    <p>({this.props.items.grainSum}/170) gms</p>
+                </CountSection>
+                {(this.props.items.grainSum >= 170) &&
+                    <Check><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M19.0683 4.57652C18.6778 4.186 18.0446 4.186 17.6541 4.57652L9.17453 13.0561L6.34498 10.2265C5.95445 9.836 5.32129 9.836 4.93076 10.2265L2.80827 12.349C2.41775 12.7395 2.41775 13.3727 2.80827 13.7632L5.63783 16.5928L5.63327 16.5973L8.46287 19.4269C8.85339 19.8175 9.48656 19.8175 9.87708 19.4269L21.1908 8.11323C21.5813 7.7227 21.5813 7.08954 21.1908 6.69901L19.0683 4.57652Z" fill="#4a90e2"></path></svg></Check>
+                }
             </Card>
             <Card>
                 <ImageSection color="#EB5757">
@@ -116,6 +134,12 @@ class FoodGroupList extends React.Component {
                         <p>{item}</p>
                     ))}
                 </TextSection>
+                <CountSection color="#EB5757">
+                    <p>({this.props.items.meatSum}/160) gms</p>
+                </CountSection>
+                {(this.props.items.meatSum >= 160) &&
+                    <Check><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M19.0683 4.57652C18.6778 4.186 18.0446 4.186 17.6541 4.57652L9.17453 13.0561L6.34498 10.2265C5.95445 9.836 5.32129 9.836 4.93076 10.2265L2.80827 12.349C2.41775 12.7395 2.41775 13.3727 2.80827 13.7632L5.63783 16.5928L5.63327 16.5973L8.46287 19.4269C8.85339 19.8175 9.48656 19.8175 9.87708 19.4269L21.1908 8.11323C21.5813 7.7227 21.5813 7.08954 21.1908 6.69901L19.0683 4.57652Z" fill="#4a90e2"></path></svg></Check>
+                }
             </Card>
         </Wrapper>
     );
@@ -214,3 +238,28 @@ const TextSection = styled.p`
         color: black;
     }
 `;
+
+const CountSection = styled.p`
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    top: 150px;
+    right: 30px;
+
+    p{
+        right: 30px;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial;
+        color: ${props => props.color};
+    }
+`;
+
+const Check = styled.p`
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    transform: scale(2)
+`;
+

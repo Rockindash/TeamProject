@@ -8,6 +8,93 @@ class FoodGroupBtn extends React.Component {
     handleClick = () => {
         this.props.enableFoodGroupPage(true)
         this.props.enableItemsPage(false)
+
+        // Count
+        var milkSum = 0, vegSum = 0, grainSum = 0, meatSum = 0
+
+        // Milk
+        for (let i = 0; i < this.props.items.milkGroupUnit.length; i++) {
+          switch (this.props.items.milkGroupUnit[i]) {
+            case "Piece":
+              milkSum += this.props.items.milkGroupQuantity[i]*80
+              break;
+            case "Cup":
+              milkSum += this.props.items.milkGroupQuantity[i]*120
+                break;
+            case "Gms":
+              milkSum += this.props.items.milkGroupQuantity[i]*1
+              break;
+            case "Bowl":
+              milkSum += this.props.items.milkGroupQuantity[i]*200
+              break;
+            default:
+              break;
+          }
+        }
+        this.props.setMilkCount(milkSum)
+
+        // Veg
+        for (let i = 0; i < this.props.items.vegGroupUnit.length; i++) {
+          switch (this.props.items.vegGroupUnit[i]) {
+            case "Piece":
+              vegSum += this.props.items.vegGroupQuantity[i]*80
+              break;
+            case "Cup":
+              vegSum += this.props.items.vegGroupQuantity[i]*120
+                break;
+            case "Gms":
+              vegSum += this.props.items.vegGroupQuantity[i]*1
+              break;
+            case "Bowl":
+              vegSum += this.props.items.vegGroupQuantity[i]*200
+              break;
+            default:
+              break;
+          }
+        }
+        this.props.setVegCount(vegSum)
+
+        // Grain
+        for (let i = 0; i < this.props.items.grainGroupUnit.length; i++) {
+          switch (this.props.items.grainGroupUnit[i]) {
+            case "Piece":
+              grainSum += this.props.items.grainGroupQuantity[i]*80
+              break;
+            case "Cup":
+              grainSum += this.props.items.grainGroupQuantity[i]*120
+                break;
+            case "Gms":
+              grainSum += this.props.items.grainGroupQuantity[i]*1
+              break;
+            case "Bowl":
+              grainSum += this.props.items.grainGroupQuantity[i]*200
+              break;
+            default:
+              break;
+          }
+        }
+        this.props.setGrainCount(grainSum)
+
+        // Meat
+        for (let i = 0; i < this.props.items.meatGroupUnit.length; i++) {
+          switch (this.props.items.meatGroupUnit[i]) {
+            case "Piece":
+              meatSum += this.props.items.meatGroupQuantity[i]*80
+              break;
+            case "Cup":
+              meatSum += this.props.items.meatGroupQuantity[i]*120
+                break;
+            case "Gms":
+              meatSum += this.props.items.meatGroupQuantity[i]*1
+              break;
+            case "Bowl":
+              meatSum += this.props.items.meatGroupQuantity[i]*200
+              break;
+            default:
+              break;
+          }
+        }
+        this.props.setMeatCount(meatSum)
     };
 
     render() {
@@ -95,6 +182,30 @@ const mapDispatchToProps = dispatch => {
         type: 'foodGroup',
         payload: value,
         });
+    },
+    setMilkCount: value => {
+      dispatch({
+      type: 'milkAmount',
+      payload: value,
+      });
+    },
+    setVegCount: value => {
+      dispatch({
+      type: 'vegAmount',
+      payload: value,
+      });
+    },
+    setGrainCount: value => {
+      dispatch({
+      type: 'grainAmount',
+      payload: value,
+      });
+    },
+    setMeatCount: value => {
+      dispatch({
+      type: 'meatAmount',
+      payload: value,
+      });
     },
   };
 };

@@ -20,18 +20,26 @@ class ItemsList extends React.Component {
         case 0:
           var innerNum = this.props.items.milkGroup.indexOf(item)
           this.props.removeFromMilk(innerNum)
+          this.props.removeFromMilkUnit(innerNum)
+          this.props.removeFromMilkQuantity(innerNum)
           break;
         case 1:
           var innerNum = this.props.items.vegGroup.indexOf(item)
           this.props.removeFromVeg(innerNum)
+          this.props.removeFromVegUnit(innerNum)
+          this.props.removeFromVegQuantity(innerNum)
           break;
         case 2:
           var innerNum = this.props.items.grainGroup.indexOf(item)
           this.props.removeFromGrain(innerNum)
+          this.props.removeFromGrainUnit(innerNum)
+          this.props.removeFromGrainQuantity(innerNum)
           break;
         case 3:
           var innerNum = this.props.items.meatGroup.indexOf(item)
           this.props.removeFromMeat(innerNum)
+          this.props.removeFromMeatUnit(innerNum)
+          this.props.removeFromMeatQuantity(innerNum)
           break;
         default:
       }
@@ -53,18 +61,26 @@ class ItemsList extends React.Component {
         case 0:
           var innerNum = this.props.items.milkGroup.indexOf(item)
           this.props.removeFromMilk(innerNum)
+          this.props.removeFromMilkUnit(innerNum)
+          this.props.removeFromMilkQuantity(innerNum)
           break;
         case 1:
           var innerNum = this.props.items.vegGroup.indexOf(item)
           this.props.removeFromVeg(innerNum)
+          this.props.removeFromVegUnit(innerNum)
+          this.props.removeFromVegQuantity(innerNum)
           break;
         case 2:
           var innerNum = this.props.items.grainGroup.indexOf(item)
           this.props.removeFromGrain(innerNum)
+          this.props.removeFromGrainUnit(innerNum)
+          this.props.removeFromGrainQuantity(innerNum)
           break;
         case 3:
           var innerNum = this.props.items.meatGroup.indexOf(item)
           this.props.removeFromMeat(innerNum)
+          this.props.removeFromMeatUnit(innerNum)
+          this.props.removeFromMeatQuantity(innerNum)
           break;
         default:
       }
@@ -72,15 +88,23 @@ class ItemsList extends React.Component {
       switch (this.props.items.inDineGroup[num]) {
         case 0:
           this.props.addToMilk(item)
+          this.props.addToMilkUnit(this.props.field.inDineUnit[index])
+          this.props.addToMilkQuantity(this.props.field.inDineQuantity[index])
           break;
         case 1:
           this.props.addToVeg(item)
+          this.props.addToVegUnit(this.props.field.inDineUnit[index])
+          this.props.addToVegQuantity(this.props.field.inDineQuantity[index])
           break;
         case 2:
           this.props.addToGrain(item)
+          this.props.addToGrainUnit(this.props.field.inDineUnit[index])
+          this.props.addToGrainQuantity(this.props.field.inDineQuantity[index])
           break;
         case 3:
           this.props.addToMeat(item)
+          this.props.addToMeatUnit(this.props.field.inDineUnit[index])
+          this.props.addToMeatQuantity(this.props.field.inDineQuantity[index])
           break;
       default:
       }
@@ -92,12 +116,45 @@ class ItemsList extends React.Component {
     this.props.toggleInfoScreen(!this.props.items.isInfoScreenEnabled)
   };
 
-  removeOutDineItem = (index) => {
+  removeOutDineItem = (index, item) => {
     this.props.removeFromOutDineList(index)
     this.props.removeSelectedFromOutDineList(index)
     this.props.removeOutDineTimeStamp(index)
     this.props.removeOutDineUnit(index)
     this.props.removeOutDineQuantity(index)
+
+
+    var num = this.props.items.inDineName.indexOf(item)
+
+    if(this.props.items.outDineSelectedState[index]){
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          var innerNum = this.props.items.milkGroup.indexOf(item)
+          this.props.removeFromMilk(innerNum)
+          this.props.removeFromMilkUnit(innerNum)
+          this.props.removeFromMilkQuantity(innerNum)
+          break;
+        case 1:
+          var innerNum = this.props.items.vegGroup.indexOf(item)
+          this.props.removeFromVeg(innerNum)
+          this.props.removeFromVegUnit(innerNum)
+          this.props.removeFromVegQuantity(innerNum)
+          break;
+        case 2:
+          var innerNum = this.props.items.grainGroup.indexOf(item)
+          this.props.removeFromGrain(innerNum)
+          this.props.removeFromGrainUnit(innerNum)
+          this.props.removeFromGrainQuantity(innerNum)
+          break;
+        case 3:
+          var innerNum = this.props.items.meatGroup.indexOf(item)
+          this.props.removeFromMeat(innerNum)
+          this.props.removeFromMeatUnit(innerNum)
+          this.props.removeFromMeatQuantity(innerNum)
+          break;
+        default:
+      }
+    }
   };
 
   handleOutDineSelection = (index, item) => {
@@ -114,18 +171,26 @@ class ItemsList extends React.Component {
         case 0:
           var innerNum = this.props.items.milkGroup.indexOf(item)
           this.props.removeFromMilk(innerNum)
+          this.props.removeFromMilkUnit(innerNum)
+          this.props.removeFromMilkQuantity(innerNum)
           break;
         case 1:
           var innerNum = this.props.items.vegGroup.indexOf(item)
           this.props.removeFromVeg(innerNum)
+          this.props.removeFromVegUnit(innerNum)
+          this.props.removeFromVegQuantity(innerNum)
           break;
         case 2:
           var innerNum = this.props.items.grainGroup.indexOf(item)
           this.props.removeFromGrain(innerNum)
+          this.props.removeFromGrainUnit(innerNum)
+          this.props.removeFromGrainQuantity(innerNum)
           break;
         case 3:
           var innerNum = this.props.items.meatGroup.indexOf(item)
           this.props.removeFromMeat(innerNum)
+          this.props.removeFromMeatUnit(innerNum)
+          this.props.removeFromMeatQuantity(innerNum)
           break;
         default:
       }
@@ -133,15 +198,23 @@ class ItemsList extends React.Component {
       switch (this.props.items.inDineGroup[num]) {
         case 0:
           this.props.addToMilk(item)
+          this.props.addToMilkUnit(this.props.field.outDineUnit[index])
+          this.props.addToMilkQuantity(this.props.field.outDineQuantity[index])
           break;
         case 1:
           this.props.addToVeg(item)
+          this.props.addToVegUnit(this.props.field.outDineUnit[index])
+          this.props.addToVegQuantity(this.props.field.outDineQuantity[index])
           break;
         case 2:
           this.props.addToGrain(item)
+          this.props.addToGrainUnit(this.props.field.outDineUnit[index])
+          this.props.addToGrainQuantity(this.props.field.outDineQuantity[index])
           break;
         case 3:
           this.props.addToMeat(item)
+          this.props.addToMeatUnit(this.props.field.outDineUnit[index])
+          this.props.addToMeatQuantity(this.props.field.outDineQuantity[index])
           break;
       default:
     }
@@ -187,7 +260,7 @@ class ItemsList extends React.Component {
                 <OutDineCheckbox className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleOutDineSelection(index, item)}/>
                   <p>{item}</p>
                   <OutDineBack className={this.props.items.outDineSelectedState[index] ? 'enabled' : 'disabled'}/>
-                  <div className='closeBtn' onClick={() => this.removeOutDineItem(index)}><p>X</p></div>
+                  <div className='closeBtn' onClick={() => this.removeOutDineItem(index, item)}><p>X</p></div>
                   <div className='infoBtn' onClick={() => this.showInfo(index)}><p>More Information</p></div>
                 </OutDineItemWrapper>
               </div>
@@ -203,7 +276,8 @@ class ItemsList extends React.Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    main: state.main
+    main: state.main,
+    field: state.field
   };
 };
 
@@ -248,6 +322,102 @@ const mapDispatchToProps = dispatch => {
     addToMilk: array => {
       dispatch({
         type: 'milkGroup',
+        payload: array,
+      });
+    },
+    addToMilkUnit: array => {
+      dispatch({
+        type: 'milkGroupUnitAdd',
+        payload: array,
+      });
+    },
+    addToVegUnit: array => {
+      dispatch({
+        type: 'vegGroupUnitAdd',
+        payload: array,
+      });
+    },
+    addToGrainUnit: array => {
+      dispatch({
+        type: 'grainGroupUnitAdd',
+        payload: array,
+      });
+    },
+    addToMeatUnit: array => {
+      dispatch({
+        type: 'meatGroupUnitAdd',
+        payload: array,
+      });
+    },
+    addToMilkQuantity: array => {
+      dispatch({
+        type: 'milkGroupQuantityAdd',
+        payload: array,
+      });
+    },
+    addToVegQuantity: array => {
+      dispatch({
+        type: 'vegGroupQuantityAdd',
+        payload: array,
+      });
+    },
+    addToGrainQuantity: array => {
+      dispatch({
+        type: 'grainGroupQuantityAdd',
+        payload: array,
+      });
+    },
+    addToMeatQuantity: array => {
+      dispatch({
+        type: 'meatGroupQuantityAdd',
+        payload: array,
+      });
+    },
+    removeFromMilkUnit: array => {
+      dispatch({
+        type: 'milkGroupUnitRemove',
+        payload: array,
+      });
+    },
+    removeFromVegUnit: array => {
+      dispatch({
+        type: 'vegGroupUnitRemove',
+        payload: array,
+      });
+    },
+    removeFromGrainUnit: array => {
+      dispatch({
+        type: 'grainGroupUnitRemove',
+        payload: array,
+      });
+    },
+    removeFromMeatUnit: array => {
+      dispatch({
+        type: 'meatGroupUnitRemove',
+        payload: array,
+      });
+    },
+    removeFromMilkQuantity: array => {
+      dispatch({
+        type: 'milkGroupQuantityRemove',
+        payload: array,
+      });
+    },
+    removeFromVegQuantity: array => {
+      dispatch({
+        type: 'vegGroupQuantityRemove',
+        payload: array,
+      });
+    },
+    removeFromGrainQuantity: array => {
+      dispatch({
+        type: 'grainGroupQuantityRemove',
+        payload: array,
+      });
+    },
+    removeFromMeatQuantity: array => {
+      dispatch({
+        type: 'meatGroupQuantityRemove',
         payload: array,
       });
     },
