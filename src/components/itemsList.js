@@ -5,11 +5,37 @@ import { connect } from 'react-redux';
 
 class ItemsList extends React.Component {
 
-  removeInDineItem = (index) => {
+  removeInDineItem = (index, item) => {
     this.props.removeFromInDineList(index)
     this.props.removeSelectedFromInDineList(index)
     this.props.removeTimeStamp(index)
     this.props.removeInDineUnit(index)
+    this.props.removeInDineQuantity(index)
+
+    //Remove from Food Group in case
+    var num = this.props.items.inDineName.indexOf(item)
+
+    if(this.props.items.inDineSelectedState[index]){
+      switch (this.props.items.inDineGroup[num]) {
+        case 0:
+          var innerNum = this.props.items.milkGroup.indexOf(item)
+          this.props.removeFromMilk(innerNum)
+          break;
+        case 1:
+          var innerNum = this.props.items.vegGroup.indexOf(item)
+          this.props.removeFromVeg(innerNum)
+          break;
+        case 2:
+          var innerNum = this.props.items.grainGroup.indexOf(item)
+          this.props.removeFromGrain(innerNum)
+          break;
+        case 3:
+          var innerNum = this.props.items.meatGroup.indexOf(item)
+          this.props.removeFromMeat(innerNum)
+          break;
+        default:
+      }
+    }
   };
 
   handleInDineSelection = (index, item) => {
@@ -71,6 +97,7 @@ class ItemsList extends React.Component {
     this.props.removeSelectedFromOutDineList(index)
     this.props.removeOutDineTimeStamp(index)
     this.props.removeOutDineUnit(index)
+    this.props.removeOutDineQuantity(index)
   };
 
   handleOutDineSelection = (index, item) => {
@@ -139,7 +166,7 @@ class ItemsList extends React.Component {
                   <InDineCheckbox className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'} onClick={() => this.handleInDineSelection(index,item)}/>
                   <p>{item}</p>
                   <InDineBack className={this.props.items.inDineSelectedState[index] ? 'enabled' : 'disabled'}/>
-                  <div className='closeBtn' onClick={() => this.removeInDineItem(index)}><p>X</p></div>
+                  <div className='closeBtn' onClick={() => this.removeInDineItem(index, item)}><p>X</p></div>
                   <div className='infoBtn' onClick={() => this.showInfo(index)}><p>More Information</p></div>
                 </InDineItemWrapper>
               </div>
@@ -293,6 +320,18 @@ const mapDispatchToProps = dispatch => {
     removeInDineUnit: index => {
       dispatch({
         type: 'removeInDineUnit',
+        payload: index,
+      });
+    },
+    removeInDineQuantity: index => {
+      dispatch({
+        type: 'removeInDineQuantity',
+        payload: index,
+      });
+    },
+    removeOutDineQuantity: index => {
+      dispatch({
+        type: 'removeOutDineQuantity',
         payload: index,
       });
     },

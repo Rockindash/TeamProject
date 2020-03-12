@@ -16,6 +16,7 @@ class InDiningForm extends React.Component {
         this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
         this.props.addTime(this.props.field.currentDate)
         this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])
+        this.props.addQuantity(this.props.field.quantity)
         this.props.addSelectedState(false)
         this.props.handleForm(false)
     };
@@ -33,22 +34,24 @@ class InDiningForm extends React.Component {
           <Form>
               <h1>ADD ITEM</h1>
               <h2>(In Dining)</h2>
-              <NameWrapper>
-                  <h1>Name</h1>
-                  <DropdownWrapper><NameDropdown/></DropdownWrapper>
-              </NameWrapper>
+              
               <TimeWrapper>
                   <h1>Time</h1>
                   <DropdownWrapperTime><p>{this.props.field.currentDate}</p></DropdownWrapperTime>
               </TimeWrapper>
-              <UnitWrapper>
-                  <h1>Quantity Unit</h1>
-                  <DropdownWrapperUnit><UnitDropdown/></DropdownWrapperUnit>
-              </UnitWrapper>
               <QuantityWrapper>
                   <h1>Quantity</h1>
                   <DropdownWrapperQuantity><input onChange={this.handleQuantity} type="number" /></DropdownWrapperQuantity>
               </QuantityWrapper>
+              <UnitWrapper>
+                  <h1>Quantity Unit</h1>
+                  <DropdownWrapperUnit><UnitDropdown/></DropdownWrapperUnit>
+              </UnitWrapper>
+              <NameWrapper>
+                  <h1>Name</h1>
+                  <DropdownWrapper><NameDropdown/></DropdownWrapper>
+              </NameWrapper>
+              <Spacer/>
           </Form>
           <CloseBtn onClick={() => this.closeForm()}>X</CloseBtn>
           <AddBtn onClick={() => this.handleAdd()}>
@@ -101,6 +104,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
           type: 'inDineUnit',
           payload: unit,
+      });
+    },
+    addQuantity: index => {
+      dispatch({
+          type: 'addInDineQuantity',
+          payload: index,
       });
     },
     setQuantity: number => {
@@ -292,4 +301,12 @@ const DropdownWrapperQuantity = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 450px;
+`;
+
+const Spacer = styled.div`
+  position: absolute;
+  width: 400px;
+  height: 60px;
+  border-radius: 5px;
+  margin-top: 550px;
 `;

@@ -5,6 +5,8 @@ const fieldsInitialState = {
     currentDate: '',
     inDineUnit: [],
     outDineUnit: [],
+    inDineQuantity: [],
+    outDineQuantity: [],
     quantity: 1
 }
 
@@ -81,6 +83,36 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                 ...state,
                 quantity: action.payload
             };
+            break;
+        case "addInDineQuantity":
+            state = {
+                ...state,
+                inDineQuantity: state.inDineQuantity.concat(action.payload)
+            };
+            break;
+        case "addOutDineQuantity":
+            state = {
+                ...state,
+                outDineQuantity: state.outDineQuantity.concat(action.payload)
+            };
+            break;
+        case "removeInDineQuantity":
+            return {...state,
+                // adImagePaths: state.adImagePaths.filter((_, index) => index != action.payload)
+                inDineQuantity: [
+                    ...state.inDineQuantity.slice(0, action.payload),
+                    ...state.inDineQuantity.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "removeOutDineQuantity":
+            return {...state,
+                // adImagePaths: state.adImagePaths.filter((_, index) => index != action.payload)
+                outDineQuantity: [
+                    ...state.outDineQuantity.slice(0, action.payload),
+                    ...state.outDineQuantity.slice(action.payload + 1)
+                  ]
+            }
             break;
         default:
 			return state;

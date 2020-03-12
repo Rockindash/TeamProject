@@ -1,6 +1,7 @@
 
 const itemsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
+    // itemMultiplier: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
     inDineFinalItem: [],
     inDineGroup: [2,0,3,2,1,0,1,2,3,1],
     selectedIndex: 0,
