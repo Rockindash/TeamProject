@@ -6,7 +6,7 @@ import ItemsPage from '../components/itemsPage';
 import FoodGroupPage from '../components/foodGroupPage';
 
 
-class MainContentCpntainer extends React.Component {
+class MainContentContainer extends React.Component {
 
 
   render() {
