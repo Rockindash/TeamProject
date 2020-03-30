@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import {axios} from 'axios';
 
 import ItemsForm from '../components/itemsForm';
 import InfoScreen from '../components/infoScreen';

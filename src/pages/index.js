@@ -1,29 +1,30 @@
 import React from "react"
-import styled from "styled-components"
+import styled from 'styled-components';
 
-import { Provider } from "react-redux"
-import { store, persistor } from "../redux/store"
-import { PersistGate } from "redux-persist/integration/react"
+import { Provider } from "react-redux";
+import { store, persistor } from "../redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
-import Display from "../components/display"
-import axios from "axios"
+import Display from '../components/display';
+
 
 store.subscribe(() => {
-  console.log("Store Update", store.getState())
+  console.log("Store Update", store.getState());
 })
 
 class Index extends React.Component {
 
   render() {
+    
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Wrapper>
-            <Display />
+            <Display/>
           </Wrapper>
         </PersistGate>
       </Provider>
-    )
+    );
   }
 }
 
