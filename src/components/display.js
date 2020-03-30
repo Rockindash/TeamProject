@@ -10,13 +10,15 @@ import MainContentContainer from '../components/mainContentContainer';
 
 
 class Display extends React.Component {
-
   componentDidMount() {
-    //ItemReducer
-    console.log(this.props.items)
-
-    //FieldReducer
-    console.log(this.props.field)
+    axios.get('/api/items').then(res => {
+      // Edit this part
+      // res.data is the js object which has props like inDiningList outDiningList
+      dispatch({
+        type: "syncDB",
+        payload: res.data
+      });
+    })
   }
 
   render() {

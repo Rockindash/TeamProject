@@ -33,6 +33,10 @@ const itemsInitialState = {
 
 const itemsReducer = (state = itemsInitialState, action) => {
     switch (action.type) {
+        case "syncDB":
+            state = {
+                inDiningList: [...state.inDiningList, action.payload.inDiningList]
+            }
         case "inDineName":
             state = {
                 ...state,
