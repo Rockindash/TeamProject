@@ -14,10 +14,7 @@ class Display extends React.Component {
     axios.get('/api/items').then(res => {
       // Edit this part
       // res.data is the js object which has props like inDiningList outDiningList
-      dispatch({
-        type: "syncDB",
-        payload: res.data
-      });
+      this.props.syncData(res.data)
     })
   }
 
@@ -53,6 +50,12 @@ const mapDispatchToProps = dispatch => {
     setItems: data => {
       dispatch({
         type: 'testCase',
+        payload: data,
+      });
+    },
+    syncData: data => {
+      dispatch({
+        type: 'syncDB',
         payload: data,
       });
     }
