@@ -13,11 +13,6 @@ store.subscribe(() => {
 })
 
 class Index extends React.Component {
-  componentDidMount() {
-    axios.get('/api/items').then(item => {
-      
-    })
-  }
 
   render() {
     return (

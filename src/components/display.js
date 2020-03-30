@@ -11,6 +11,13 @@ import MainContentContainer from '../components/mainContentContainer';
 
 class Display extends React.Component {
 
+  componentDidMount() {
+    //ItemReducer
+    console.log(this.props.items)
+
+    //FieldReducer
+    console.log(this.props.field)
+  }
 
   render() {
     
@@ -34,7 +41,8 @@ class Display extends React.Component {
 const mapStateToProps = state => {
   return {
     main: state.main,
-    items: state.items
+    items: state.items,
+    field: state.field
   };
 };
 
