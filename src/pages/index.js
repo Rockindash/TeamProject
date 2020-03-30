@@ -1,30 +1,34 @@
 import React from "react"
-import styled from 'styled-components';
+import styled from "styled-components"
 
-import { Provider } from "react-redux";
-import { store, persistor } from "../redux/store";
-import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux"
+import { store, persistor } from "../redux/store"
+import { PersistGate } from "redux-persist/integration/react"
 
-import Display from '../components/display';
-
+import Display from "../components/display"
+import axios from "axios"
 
 store.subscribe(() => {
-  console.log("Store Update", store.getState());
+  console.log("Store Update", store.getState())
 })
 
 class Index extends React.Component {
+  componentDidMount() {
+    axios.get('/api/items').then(item => {
+      
+    })
+  }
 
   render() {
-    
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Wrapper>
-            <Display/>
+            <Display />
           </Wrapper>
         </PersistGate>
       </Provider>
-    );
+    )
   }
 }
 
@@ -38,4 +42,4 @@ const Wrapper = styled.div`
   right: 0px;
   bottom: 0px;
   background-color: white;
-`;
+`

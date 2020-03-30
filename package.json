@@ -50,9 +50,9 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "electron-build": "electron-builder",
     "build": "npm run react-build && npm run electron-build",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:8000 && electron .\"",
-    "dev": "concurrently \"npm run server\" \"npm run start\""
+    "dev": "concurrently \"npm run server\" \"npm run develop\""
   },
   "repository": {
     "type": "git",

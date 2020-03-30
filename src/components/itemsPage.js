@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import ItemsList from "../components/itemsList"
 import ToggleButton from "../components/toggleBtn"
 
-const axios = require("axios")
+import axios from "axios"
 
 class ItemsPage extends React.Component {
   openForm = () => {
@@ -31,15 +31,17 @@ class ItemsPage extends React.Component {
   }
 
   syncData = (items, field) => {
+    console.log("Syncing")
     //items - Reference for itemReducer
     // set items to: items = { inDiningList: ["Cheese", "Pizza"], outDiningList: []}
-    console.log("Syncing")
 
     // Put backend code over here
-    axios.post("/api/items", items)
+    axios
+      .post("/api/items", items)
+      .then(() => console.log(items))
+      .catch(err => console.log(err))
 
     //field - Refernce for fieldReducer
-
   }
 
   render() {
