@@ -36,8 +36,8 @@ const itemsReducer = (state = itemsInitialState, action) => {
         case "syncDB":
             state = {
                 ...state,
-                milkSum: action.payload.milkSum,
-                inDiningList: [action.payload.inDiningList]
+                milkSum: action.payload[0].milkSum,
+                inDiningList: action.payload[0].inDiningList
             }
         case "inDineName":
             state = {
