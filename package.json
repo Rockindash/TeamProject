@@ -53,7 +53,8 @@
     "build": "npm run react-build && npm run electron-build",
     "server": "node server.js",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:8000 && electron .\"",
-    "dev": "concurrently \"npm run server\" \"npm run develop\""
+    "dev": "concurrently \"npm run server\" \"npm run develop\"",
+    "dev-new": "concurrently \"npm run server\" \"npm run start\""
   },
   "repository": {
     "type": "git",
