@@ -12,8 +12,6 @@ import MainContentContainer from "../components/mainContentContainer"
 class Display extends React.Component {
   componentDidMount() {
     axios.get("http://localhost:5000/api/items").then(res => {
-      // Edit this part
-      // res.data is the js object which has props like inDiningList outDiningList
       console.log(res)
       this.props.syncData(res.data)
     })

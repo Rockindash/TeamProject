@@ -36,8 +36,25 @@ const itemsReducer = (state = itemsInitialState, action) => {
         case "syncDB":
             state = {
                 ...state,
+                inDiningList: action.payload[0].inDiningList,
+                inDineSelectedState: action.payload[0].inDineSelectedState,
+                outDiningList: action.payload[0].outDiningList,
+                outDineSelectedState: action.payload[0].outDineSelectedState,
+                vegGroup: action.payload[0].vegGroup,
+                grainGroup: action.payload[0].grainGroup,
+                meatGroup: action.payload[0].meatGroup,
+                milkGroupUnit: action.payload[0].milkGroupUnit,
+                grainGroupUnit: action.payload[0].grainGroupUnit,
+                meatGroupUnit: action.payload[0].meatGroupUnit,
+                milkGroupQuantity: action.payload[0].milkGroupQuantity,
+                vegGroupQuantity: action.payload[0].vegGroupQuantity,
+                grainGroupQuantity: action.payload[0].grainGroupQuantity,
+                meatGroupQuantity: action.payload[0].meatGroupQuantity,
                 milkSum: action.payload[0].milkSum,
-                inDiningList: action.payload[0].inDiningList
+                vegSum: action.payload[0].vegSum,
+                grainSum: action.payload[0].grainSum,
+                vegGroupUnit: action.payload[0].vegGroupUnit,
+                meatSum: action.payload[0].meatSum
             }
         case "inDineName":
             state = {
