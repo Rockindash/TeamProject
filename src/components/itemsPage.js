@@ -36,8 +36,9 @@ class ItemsPage extends React.Component {
     // set items to: items = { inDiningList: ["Cheese", "Pizza"], outDiningList: []}
 
     // Put backend code over here
+    const object = JSON.stringify(items)
     axios
-      .post("/api/items", items)
+      .post("http://localhost:5000/api/items", object)
       .then(() => console.log(items))
       .catch(err => console.log(err))
 

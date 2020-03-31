@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const mongoURI = require("./config/keys");
+const cors = require('cors');
 
 const items = require("./routes/api/items");
+
+// Use cors
+app.use(cors());
 
 // Use express body-parser
 app.use(express.json());
