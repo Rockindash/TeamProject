@@ -264,6 +264,7 @@ const DropdownWrapper = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 150px;
+  z-index: 100;
 `;
 
 const DropdownWrapperTime = styled.div`
@@ -291,6 +292,7 @@ const DropdownWrapperUnit = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 350px;
+  z-index: 90;
 `;
 
 const DropdownWrapperQuantity = styled.div`
@@ -299,6 +301,7 @@ const DropdownWrapperQuantity = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 450px;
+  z-index: 80;
 `;
 
 const Spacer = styled.div`

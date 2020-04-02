@@ -13,7 +13,7 @@ class InDiningForm extends React.Component {
     };
 
     handleAdd = e => {
-        this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
+        this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
         this.props.addTime(this.props.field.currentDate)
         this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])
         this.props.addQuantity(this.props.field.quantity)
@@ -266,6 +266,7 @@ const DropdownWrapper = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 150px;
+  z-index: 100;
 `;
 
 const DropdownWrapperTime = styled.div`
@@ -293,6 +294,7 @@ const DropdownWrapperUnit = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 350px;
+  z-index: 90;
 `;
 
 const DropdownWrapperQuantity = styled.div`
@@ -301,6 +303,7 @@ const DropdownWrapperQuantity = styled.div`
   height: 40px;
   border-radius: 5px;
   margin-top: 450px;
+  z-index: 80;
 `;
 
 const Spacer = styled.div`
