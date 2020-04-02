@@ -18,8 +18,8 @@ class NameDropdown extends React.Component {
     
     return (
       <Wrapper className={this.props.items.isDropdownEnabled ? 'enabled' : 'disabled'}>
-          <Selected onClick={() => this.handleDropdown()}><p>{this.props.items.inDineName[this.props.items.selectedIndex]}</p></Selected>
-          {this.props.items.inDineName.map((item, index) => (
+          <Selected onClick={() => this.handleDropdown()}><p>{this.props.field.inDineName[this.props.items.selectedIndex]}</p></Selected>
+          {this.props.field.inDineName.map((item, index) => (
             <div>
               <ItemWrapper onClick={() => this.handleSelectedItem(index)}>
                 <p>{item}</p>
@@ -34,7 +34,8 @@ class NameDropdown extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items
+    items: state.items,
+    field: state.field
   };
 };
 

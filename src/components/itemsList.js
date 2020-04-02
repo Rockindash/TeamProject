@@ -13,7 +13,7 @@ class ItemsList extends React.Component {
     this.props.removeInDineQuantity(index)
 
     //Remove from Food Group in case
-    var num = this.props.items.inDineName.indexOf(item)
+    var num = this.props.field.inDineName.indexOf(item)
 
     if(this.props.items.inDineSelectedState[index]){
       switch (this.props.items.inDineGroup[num]) {
@@ -53,7 +53,7 @@ class ItemsList extends React.Component {
     this.props.setInDineSelected(array)
 
     //Add to food group
-    var num = this.props.items.inDineName.indexOf(item)
+    var num = this.props.field.inDineName.indexOf(item)
 
     //Remove From Group
     if(!this.props.items.inDineSelectedState[index]){
@@ -124,7 +124,7 @@ class ItemsList extends React.Component {
     this.props.removeOutDineQuantity(index)
 
 
-    var num = this.props.items.inDineName.indexOf(item)
+    var num = this.props.field.inDineName.indexOf(item)
 
     if(this.props.items.outDineSelectedState[index]){
       switch (this.props.items.inDineGroup[num]) {
@@ -164,7 +164,7 @@ class ItemsList extends React.Component {
     this.props.setOutDineSelected(array)
 
     //Add to food group
-    var num = this.props.items.inDineName.indexOf(item)
+    var num = this.props.field.inDineName.indexOf(item)
 
     if(!this.props.items.outDineSelectedState[index]){
       switch (this.props.items.inDineGroup[num]) {
