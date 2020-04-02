@@ -13,7 +13,7 @@ class InDiningForm extends React.Component {
     };
 
     handleAdd = e => {
-        this.props.addItem(this.props.items.inDineName[this.props.items.selectedIndex])
+        this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
         this.props.addTime(this.props.field.currentDate)
         this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])
         this.props.addQuantity(this.props.field.quantity)
