@@ -1,5 +1,6 @@
 
 const fieldsInitialState = {
+    inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
     inDineNameTimeStamp: [],
     outDineNameTimeStamp: [],
     currentDate: '',

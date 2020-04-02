@@ -38,4 +38,4 @@ const Wrapper = styled.div`
   right: 0px;
   bottom: 0px;
   background-color: white;
-`;
+`
