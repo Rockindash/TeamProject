@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 import NameDropdown from '../components/nameDropdown';
 import UnitDropdown from '../components/unitDropdown';
+
 
 
 class InDiningForm extends React.Component {
@@ -11,6 +12,16 @@ class InDiningForm extends React.Component {
     closeForm = () => {
         this.props.handleForm(false)
     };
+    state = {
+      m: moment()
+    };
+    handleSave = () => {
+      console.log('saved', this.state.m.format('llll'));
+    };
+    
+  handleChange = m => {
+    this.setState({ m });
+  };
 
     handleAdd = e => {
         this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
@@ -38,6 +49,10 @@ class InDiningForm extends React.Component {
               <TimeWrapper>
                   <h1>Time</h1>
                   <DropdownWrapperTime><p>{this.props.field.currentDate}</p></DropdownWrapperTime>
+                  <DropdownWrapperTime>
+                    <input type="text" value={this.state.m.format('llll')} readOnly />
+                    
+                  </DropdownWrapperTime>
               </TimeWrapper>
               <QuantityWrapper>
                   <h1>Quantity</h1>
