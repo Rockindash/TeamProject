@@ -8,6 +8,7 @@ class ItemsList extends React.Component {
   removeInDineItem = (index, item) => {
     this.props.removeFromInDineList(index)
     this.props.removeSelectedFromInDineList(index)
+    this.props.removeInDineDate(index)
     this.props.removeTimeStamp(index)
     this.props.removeInDineUnit(index)
     this.props.removeInDineQuantity(index)
@@ -119,6 +120,7 @@ class ItemsList extends React.Component {
   removeOutDineItem = (index, item) => {
     this.props.removeFromOutDineList(index)
     this.props.removeSelectedFromOutDineList(index)
+    this.props.removeOutDineDate(index)
     this.props.removeOutDineTimeStamp(index)
     this.props.removeOutDineUnit(index)
     this.props.removeOutDineQuantity(index)
@@ -289,6 +291,12 @@ const mapDispatchToProps = dispatch => {
         payload: index,
       });
     },
+    removeInDineDate: index => {
+      dispatch({
+        type: 'removeInDineDate',
+        payload: index,
+      });
+    },
     removeSelectedFromInDineList: index => {
       dispatch({
         type: 'removeSelectedArray',
@@ -298,6 +306,12 @@ const mapDispatchToProps = dispatch => {
     removeFromOutDineList: index => {
       dispatch({
         type: 'removeOutDineItem',
+        payload: index,
+      });
+    },
+    removeOutDineDate: index => {
+      dispatch({
+        type: 'removeOutDineDate',
         payload: index,
       });
     },

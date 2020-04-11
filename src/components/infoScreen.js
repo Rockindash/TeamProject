@@ -22,6 +22,7 @@ class InfoScreen extends React.Component {
                     <FoodData>
                         <h4>Name: {this.props.items.inDiningList[this.props.items.selectedIndex]}</h4>
                         <h4>Date: {this.props.field.inDineDate[this.props.items.selectedIndex]}</h4>
+                        <h4>Time: {this.props.field.inDineNameTimeStamp[this.props.items.selectedIndex]}</h4>
                         <h4>Quantity: {this.props.field.inDineQuantity[this.props.items.selectedIndex]} {this.props.field.inDineUnit[this.props.items.selectedIndex]}</h4>
                     </FoodData>
                 }
@@ -29,6 +30,7 @@ class InfoScreen extends React.Component {
                     <FoodData>
                         <h4>Name: {this.props.items.outDiningList[this.props.items.selectedIndex]}</h4>
                         <h4>Date: {this.props.field.outDineDate[this.props.items.selectedIndex]}</h4>
+                        <h4>Time: {this.props.field.outDineNameTimeStamp[this.props.items.selectedIndex]}</h4>
                         <h4>Quantity: {this.props.field.outDineQuantity[this.props.items.selectedIndex]} {this.props.field.outDineUnit[this.props.items.selectedIndex]}</h4>
                     </FoodData>
                 }

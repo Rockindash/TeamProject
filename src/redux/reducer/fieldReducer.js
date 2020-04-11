@@ -48,12 +48,28 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                   ]
             }
             break;
+        case "removeInDineDate":
+            return {...state,
+                inDineDate: [
+                    ...state.inDineDate.slice(0, action.payload),
+                    ...state.inDineDate.slice(action.payload + 1)
+                  ]
+            }
+            break;
         case "removeOutDineTime":
             return {...state,
                 // adImagePaths: state.adImagePaths.filter((_, index) => index != action.payload)
                 outDineNameTimeStamp: [
                     ...state.outDineNameTimeStamp.slice(0, action.payload),
                     ...state.outDineNameTimeStamp.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "removeOutDineDate":
+            return {...state,
+                outDineDate: [
+                    ...state.outDineDate.slice(0, action.payload),
+                    ...state.outDineDate.slice(action.payload + 1)
                   ]
             }
             break;
