@@ -5,8 +5,8 @@ const mainInitialState = {
     inDineEnabled: true,
     outDineEnabled: false,
     isFormEnabled: false,
-    isPieChartEnabled: true,
-    isGraphEnabled: false
+    isPieChartEnabled: false,
+    isGraphEnabled: true
 }
 
 const mainReducer = (state = mainInitialState, action) => {

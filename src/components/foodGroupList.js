@@ -2,9 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PieChart from 'react-minimal-pie-chart';
+import Chart from "react-apexcharts";
 
 
 class FoodGroupList extends React.Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          options: {
+            chart: {
+              id: "basic-bar"
+            },
+            type: 'bar',
+            xaxis: {
+              categories: ["Milk", "Vegetables", "Grains", "Meat"]
+            }
+          },
+          series: [
+            {
+              name: "Eaten",
+              data: [this.props.items.milkSum, this.props.items.vegSum, this.props.items.grainSum, this.props.items.meatSum]
+            }
+          ]
+        };
+      }
     
     handlePieChart = () => {
         this.props.setPieChart(true)
@@ -38,6 +61,16 @@ class FoodGroupList extends React.Component {
                     { title: 'Meat', value: this.props.items.meatSum, color: '#EB5757' },
                 ]}
             />
+            }
+            {this.props.main.isGraphEnabled &&
+                <ChartWrapper>
+                    <Chart
+                        options={this.state.options}
+                        series={this.state.series}
+                        type="bar"
+                        width="100%"
+                    />
+              </ChartWrapper>
             }
             </StatsWrapper>
             <ListWrapper>
@@ -380,4 +413,9 @@ const OutDine = styled.div`
         }
       }
       transition: 0.5s cubic-bezier(0.5, 0.8, 0.2, 1);
+`;
+
+const ChartWrapper = styled.div`
+    position: absolute;
+    top: 100px;
 `;
