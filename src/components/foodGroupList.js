@@ -1,18 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PieChart from 'react-minimal-pie-chart';
 
 
 class FoodGroupList extends React.Component {
+    
+    handlePieChart = () => {
+        this.props.setPieChart(true)
+        this.props.setGraph(false)
+      };
+    
+      handleGraph = () => {
+        this.props.setPieChart(false)
+        this.props.setGraph(true)
+      };
 
   render() {
     
     return (
         <Wrapper>
+            <StatsWrapper>
+            <ToggleWrapper>
+                <InDine className={this.props.main.isPieChartEnabled ? 'enabled' : 'disabled'} onClick={() => this.handlePieChart()}>
+                <p>PIE CHART</p>
+                </InDine>
+                <OutDine className={this.props.main.isGraphEnabled ? 'enabled' : 'disabled'} onClick={() => this.handleGraph()}>
+                <p>GRAPH</p>
+                </OutDine>
+            </ToggleWrapper>
+            {this.props.main.isPieChartEnabled &&
+                <PieChart
+                data={[
+                    { title: 'Milk', value: this.props.items.milkSum, color: '#48B19E' },
+                    { title: 'Veg', value: this.props.items.vegSum, color: '#A4AB38' },
+                    { title: 'Grain', value: this.props.items.grainSum, color: '#B58235' },
+                    { title: 'Meat', value: this.props.items.meatSum, color: '#EB5757' },
+                ]}
+            />
+            }
+            </StatsWrapper>
+            <ListWrapper>
             <Card>
                 <ImageSection color="#48B19E">
                     <ImageText color="#48B19E">MILK and ALTERNATIVES</ImageText>
-                    <Image left="25px">
+                    <Image left="5px">
                         <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
                             <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-25" y="-90" width="600" height="200">
@@ -48,7 +80,7 @@ class FoodGroupList extends React.Component {
             <Card>
                 <ImageSection color="#A4AB38">
                     <ImageText color="#A4AB38">VEGETABLES and FRUITS</ImageText>
-                    <Image left="52px">
+                    <Image left="30px">
                     <svg width="89" height="114" viewBox="0 0 89 114" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M88.5303 82.85C88.5303 71.1625 82.8428 60.2875 72.1553 51.2875C67.9678 47.7875 63.6553 43.0375 60.7803 39.6625C75.7803 31.1625 78.2803 9.47504 78.4053 8.53754L79.0303 2.53754L73.3428 4.66254C65.2803 7.66254 58.5303 12.6 54.3428 15.725C51.5928 11.0375 47.8428 5.47504 47.5928 5.16254L44.5303 0.600037L41.4053 5.10004C39.4678 7.91254 37.3428 10.85 35.8428 13.0375C26.5928 7.16254 12.9677 4.28754 12.3427 4.16254L7.15552 3.10004L7.84289 8.35004C9.96789 24.2875 20.5302 34.0375 29.0928 38.7875C26.2802 42.1625 21.5305 47.6 16.9055 51.475C6.21802 60.475 0.530518 71.35 0.530518 83.0375C0.530518 98.35 9.9052 108.662 26.7802 112.662C25.5927 113.85 24.5929 115.35 23.8429 117.1C22.8429 119.475 23.9055 122.225 26.2805 123.287C26.9055 123.537 27.5304 123.662 28.1554 123.662C29.9678 123.662 31.7178 122.6 32.4678 120.85C33.9053 117.475 37.7803 117.1 38.0303 117.037C38.6553 116.975 39.2803 116.787 39.8428 116.537V120.1C39.8428 122.662 41.9678 124.787 44.5303 124.787C47.0928 124.787 49.2178 122.662 49.2178 120.1V116.162C49.5928 116.287 49.9053 116.412 50.2803 116.475C50.4678 116.475 54.5928 116.912 55.9678 120.6C56.6553 122.475 58.4678 123.662 60.3428 123.662C60.9053 123.662 61.4678 123.6 61.9678 123.35C64.4053 122.475 65.6553 119.725 64.7178 117.35C64.0303 115.537 63.0928 113.975 61.9678 112.725C79.0928 108.6 88.5303 98.225 88.5303 82.85ZM16.6553 12.85C22.0303 14.4125 29.8428 17.1625 34.4053 21.0375L37.5303 23.6625L39.9053 20.35C39.9053 20.35 42.0303 17.4125 44.5303 13.7875C46.4053 16.725 48.7178 20.475 49.7803 22.6625L51.3428 25.9125L54.6553 24.475C55.5928 24.0375 56.6553 23.2875 58.5928 21.85C61.2178 19.9125 65.0303 17.0375 69.5303 14.6C67.6553 21.1625 63.5928 30.5375 55.2178 34.0375L44.6553 33.85H44.5928H44.5303L36.9053 33.975C30.6553 31.7875 20.5303 25.1 16.6553 12.85ZM73.0303 99.85C75.7178 79.975 69.7178 72.9125 63.7803 66.1C62.3428 64.4125 60.8428 62.725 59.4678 60.725C58.2803 59.0375 55.9678 58.6 54.2178 59.7875C52.5303 60.975 52.0928 63.2875 53.2803 65.0375C54.8428 67.225 56.4678 69.1625 58.0928 71.0375C64.0303 77.9125 68.7803 83.4125 64.6553 104.162C59.5928 105.912 53.8428 106.662 48.2178 106.912V76.975C48.2178 74.9125 46.5303 73.225 44.4678 73.225C42.4053 73.225 40.7178 74.9125 40.7178 76.975V106.912C34.2803 106.662 27.593 105.662 21.968 103.287C18.218 83.2875 22.8427 77.85 28.7178 71.0375C30.9053 68.475 33.4053 65.6 35.5303 61.85C36.5303 60.0375 35.9053 57.7875 34.0928 56.725C32.2803 55.725 30.0303 56.35 28.9678 58.1625C27.218 61.2875 25.1554 63.6625 23.0304 66.1625C17.3429 72.725 11.5303 79.475 13.5303 97.725C10.1553 94.1625 8.03021 89.4125 8.03021 82.9125C8.03021 71.0375 15.4677 62.35 21.7177 57.1C27.8427 51.975 33.9678 44.6 36.4678 41.5375L44.4678 41.4125L52.4678 41.5375C54.9678 44.6 61.0303 51.9125 67.2178 57.1C73.4678 62.35 80.9053 71.0375 80.9053 82.9125C81.0303 90.7875 77.8428 96.1625 73.0303 99.85Z" fill="#A4AB38"/>
                     </svg>
@@ -72,7 +104,7 @@ class FoodGroupList extends React.Component {
             <Card>
                 <ImageSection color="#B58235">
                     <ImageText color="#B58235">GRAIN PRODUCTS</ImageText>
-                    <Image left="20px">
+                    <Image left="0px">
                     <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">
                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-26" y="-85" width="600" height="200">
@@ -108,7 +140,7 @@ class FoodGroupList extends React.Component {
             <Card>
                 <ImageSection color="#EB5757">
                     <ImageText color="#EB5757">MEAT and ALTERNATIVES</ImageText>
-                    <Image left="20px">
+                    <Image left="0px">
                     <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">
                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-25" y="-78" width="600" height="210">
@@ -141,6 +173,7 @@ class FoodGroupList extends React.Component {
                     <Check><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M19.0683 4.57652C18.6778 4.186 18.0446 4.186 17.6541 4.57652L9.17453 13.0561L6.34498 10.2265C5.95445 9.836 5.32129 9.836 4.93076 10.2265L2.80827 12.349C2.41775 12.7395 2.41775 13.3727 2.80827 13.7632L5.63783 16.5928L5.63327 16.5973L8.46287 19.4269C8.85339 19.8175 9.48656 19.8175 9.87708 19.4269L21.1908 8.11323C21.5813 7.7227 21.5813 7.08954 21.1908 6.69901L19.0683 4.57652Z" fill="#4a90e2"></path></svg></Check>
                 }
             </Card>
+            </ListWrapper>
         </Wrapper>
     );
   }
@@ -161,7 +194,19 @@ const mapDispatchToProps = dispatch => {
         type: 'testCase',
         payload: data,
       });
-    }
+    },
+    setPieChart: isEnabled => {
+        dispatch({
+          type: 'pieChart',
+          payload: isEnabled,
+        });
+      },
+      setGraph: isEnabled => {
+        dispatch({
+          type: 'graph',
+          payload: isEnabled,
+        });
+      },
   };
 };
   
@@ -171,31 +216,42 @@ export default connect(
     mapDispatchToProps
 )(FoodGroupList);
 
+const Wrapper = styled.div``;
 
-const Wrapper = styled.div`
+const StatsWrapper = styled.div`
     position: absolute;
-    height: 640px;
-    width: 800px;
-    right: 70px;
+    height: 550px;
+    width: 350px;
+    left: 50px;
     bottom: 0px;
     overflow: scroll;
 `;
 
+const ListWrapper = styled.div`
+    position: absolute;
+    height: 640px;
+    width: 400px;
+    right: 70px;
+    bottom: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+`;
+
 const Card = styled.div`
     position: relative;
-    left: 100px;
+    left: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 200px;
-    width: 600px;
+    height: 150px;
+    width: 380px;
     border-radius: 10px;
     background-color: #F3F3F3;
 `;
 
 const ImageSection = styled.div`
     position: absolute;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     overflow: hidden;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -206,7 +262,7 @@ const ImageText = styled.p`
     position: absolute;
     right: 10px;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     font-family: Arial;
     text-align: right;
@@ -216,7 +272,7 @@ const ImageText = styled.p`
 const Image = styled.p`
     position: absolute;
     margin-left: ${props => props.left};
-    margin-top: 90px;
+    margin-top: 70px;
 `;
 
 const TextSection = styled.p`
@@ -243,7 +299,7 @@ const CountSection = styled.p`
     position: absolute;
     height: 50px;
     width: 200px;
-    top: 150px;
+    top: 100px;
     right: 30px;
 
     p{
@@ -263,3 +319,65 @@ const Check = styled.p`
     transform: scale(2)
 `;
 
+const ToggleWrapper = styled.div`
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    width: 322px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid rgba(69, 66, 66, 1);
+`;
+
+const InDine = styled.div`
+    position: absolute;
+    width: 160px;
+    height: 46px;
+    cursor: pointer;
+    border: 1px solid rgba(69, 66, 66, 1);
+
+    p{
+      margin-left: 32px;
+      margin-top: 10px;
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: Arial;
+      color: #454242;
+    }
+
+    &.enabled {
+      background-color: #454242;
+      p{
+        color: white;
+      }
+      transition: 0.5s cubic-bezier(0.5, 0.8, 0.2, 1);
+    }
+`;
+
+const OutDine = styled.div`
+    position: absolute;
+    width: 160px;
+    height: 46px;
+    margin-left: 160px;
+    cursor: pointer;
+    border: 1px solid rgba(69, 66, 66, 1);
+
+    p{
+      margin-left: 35px;
+      margin-top: 10px;
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: Arial;
+      color: #454242;
+    }
+
+    &.enabled {
+      background-color: #454242;
+        p{
+          color: white;
+        }
+      }
+      transition: 0.5s cubic-bezier(0.5, 0.8, 0.2, 1);
+`;

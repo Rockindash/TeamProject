@@ -4,7 +4,9 @@ const mainInitialState = {
     isGroupPageEnabled: false,
     inDineEnabled: true,
     outDineEnabled: false,
-    isFormEnabled: false
+    isFormEnabled: false,
+    isPieChartEnabled: true,
+    isGraphEnabled: false
 }
 
 const mainReducer = (state = mainInitialState, action) => {
@@ -37,6 +39,18 @@ const mainReducer = (state = mainInitialState, action) => {
             state = {
                 ...state,
                 isFormEnabled: action.payload
+            };
+            break;
+        case "pieChart":
+            state = {
+                ...state,
+                isPieChartEnabled: action.payload
+            };
+            break;
+        case "graph":
+            state = {
+                ...state,
+                isGraphEnabled: action.payload
             };
             break;
         default:
