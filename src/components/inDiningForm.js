@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import moment from 'moment';
+
 import NameDropdown from '../components/nameDropdown';
 import UnitDropdown from '../components/unitDropdown';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -12,16 +14,21 @@ class InDiningForm extends React.Component {
     closeForm = () => {
         this.props.handleForm(false)
     };
+
+
+
+    //calender functions
+    //==============================
     state = {
-      m: moment()
+      startDate: new Date()
     };
-    handleSave = () => {
-      console.log('saved', this.state.m.format('llll'));
+  
+    handleChange = date => {
+      this.setState({
+        startDate: date
+      });
     };
-    
-  handleChange = m => {
-    this.setState({ m });
-  };
+//==============================
 
     handleAdd = e => {
         this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
@@ -50,8 +57,21 @@ class InDiningForm extends React.Component {
                   <h1>Time</h1>
                   <DropdownWrapperTime><p>{this.props.field.currentDate}</p></DropdownWrapperTime>
                   <DropdownWrapperTime>
-                    <input type="text" value={this.state.m.format('llll')} readOnly />
-                    
+                    {/* <DatePicker
+                    selected={this.state.date}
+                    onChange={this.handleChange}
+                    showTimeSelect
+                    dateFormat="Pp"
+                  /> */}
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={this.handleChange}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                      />
                   </DropdownWrapperTime>
               </TimeWrapper>
               <QuantityWrapper>
