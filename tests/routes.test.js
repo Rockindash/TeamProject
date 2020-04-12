@@ -8,7 +8,7 @@ describe("Items api route", () => {
       .expect("Content-Type", /json/)
       .expect(200, done)
   })
-  it("should send data to the db", () => {
+  it("should send data to the db", (done) => {
     request(app)
       .post("/api/items")
       .send({
@@ -35,6 +35,6 @@ describe("Items api route", () => {
       })
       .expect(200, {
         msg: "updated",
-      })
+      }, done)
   })
 })
