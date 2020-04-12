@@ -34,7 +34,7 @@ describe("Items api route", () => {
         meatSum: 0,
       })
       .expect(200, {
-        msg: "updated",
+        msg: "updated ",
       }, done)
   })
 })
