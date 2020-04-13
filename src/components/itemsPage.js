@@ -32,13 +32,14 @@ class ItemsPage extends React.Component {
 
   syncData = (items, field) => {
     console.log("Syncing")
-    //items - Reference for itemReducer
-    // set items to: items = { inDiningList: ["Cheese", "Pizza"], outDiningList: []}
+    
+    // create new object that contains all props from field and items to pass to api
+    const allData = { ...items, ...field }
 
     // Put backend code over here
     axios
-      .post("http://localhost:5000/api/items", items)
-      .then(() => console.log(items))
+      .post("http://localhost:5000/api/items", allData)
+      .then(() => console.log(allData))
       .catch(err => console.log(err))
 
     //field - Refernce for fieldReducer
