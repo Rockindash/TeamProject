@@ -50,7 +50,7 @@
     "react-start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest",
+    "test": "jest tests/routes.test.js",
     "electron-build": "electron-builder",
     "build": "npm run react-build && npm run electron-build",
     "server": "node server.js",
