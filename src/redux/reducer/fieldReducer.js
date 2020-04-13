@@ -1,4 +1,3 @@
-
 const fieldsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
     inDineNameTimeStamp: [],
@@ -13,6 +12,19 @@ const fieldsInitialState = {
 
 const fieldsReducer = (state = fieldsInitialState, action) => {
     switch (action.type) {
+        case "syncDB":
+            state = {
+                ...state,
+                inDineNameTimeStamp: action.payload[0].inDineNameTimeStamp,
+                outDineNameTimeStamp: action.payload[0].outDineNameTimeStamp,
+                currentDate: action.payload[0].currentDate,
+                inDineUnit: action.payload[0].inDineUnit,
+                outDineUnit: action.payload[0].outDineUnit,
+                inDineQuantity: action.payload[0].inDineQuantity,
+                outDineQuantity: action.payload[0].outDineQuantity,
+                quantity: action.payload[0].quantity
+            }
+            break;
         case "inDineTime":
             state = {
                 ...state,
