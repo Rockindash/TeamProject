@@ -84,15 +84,44 @@ router.post("/outDineItem", (req, res) => {
   })
 })
 
-// // Initialize the schema in db
-// router.post("/", (req, res) => {
-//   const newItem = new Items({
-//     inDiningList: req.body.inDiningList
-//   });
+// Initialize the schema in db
+router.post("/init", (req, res) => {
+  console.log('Server item init req')
+  const newItem = new Items({
+    _id: "5e80317b5cf02b571404c15d",
+    inDiningList: req.body.inDiningList,
+    inDineSelectedState: req.body.inDineSelectedState,
+    outDiningList: req.body.outDiningList,
+    outDineSelectedState: req.body.outDineSelectedState,
+    milkGroup: req.body.milkGroup,
+    vegGroup: req.body.vegGroup,
+    grainGroup: req.body.grainGroup,
+    meatGroup: req.body.meatGroup,
+    milkGroupUnit: req.body.milkGroupUnit,
+    vegGroupUnit: req.body.vegGroupUnit,
+    grainGroupUnit: req.body.grainGroupUnit,
+    meatGroupUnit: req.body.meatGroupUnit,
+    milkGroupQuantity: req.body.milkGroupQuantity,
+    vegGroupQuantity: req.body.vegGroupQuantity,
+    grainGroupQuantity: req.body.grainGroupQuantity,
+    meatGroupQuantity: req.body.meatGroupQuantity,
+    milkSum: req.body.milkSum,
+    vegSum: req.body.vegSum,
+    grainSum: req.body.grainSum,
+    meatSum: req.body.meatSum,
+    inDineNameTimeStamp: req.body.inDineNameTimeStamp,
+    outDineNameTimeStamp: req.body.outDineNameTimeStamp,
+    currentDate: req.body.currentDate,
+    inDineUnit: req.body.inDineUnit,
+    outDineUnit: req.body.outDineUnit,
+    inDineQuantity: req.body.inDineQuantity,
+    outDineQuantity: req.body.outDineQuantity,
+    quantity: req.body.quantity,
+  });
 
-//   newItem.save().then(items => {
-//     res.json(items);
-//   });
-// });
+  newItem.save().then(items => {
+    res.json(items);
+  });
+});
 
 module.exports = router
