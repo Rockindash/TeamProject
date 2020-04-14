@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PieChart from 'react-minimal-pie-chart';
 
 
 class FoodGroupList extends React.Component {
@@ -20,7 +21,14 @@ class FoodGroupList extends React.Component {
     return (
         <Wrapper>
             <StatsWrapper>
-            } */}
+                <PieChart
+                data={[
+                    { title: 'Milk', value: this.props.items.milkSum, color: '#48B19E' },
+                    { title: 'Veg', value: this.props.items.vegSum, color: '#A4AB38' },
+                    { title: 'Grain', value: this.props.items.grainSum, color: '#B58235' },
+                    { title: 'Meat', value: this.props.items.meatSum, color: '#EB5757' },
+                ]}
+            />
             </StatsWrapper>
             <ListWrapper>
             <Card>
