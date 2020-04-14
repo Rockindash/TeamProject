@@ -21,6 +21,15 @@ class FoodGroupList extends React.Component {
     return (
         <Wrapper>
             <StatsWrapper>
+            <ToggleWrapper>
+                <InDine className={this.props.main.isPieChartEnabled ? 'enabled' : 'disabled'} onClick={() => this.handlePieChart()}>
+                <p>PIE CHART</p>
+                </InDine>
+                <OutDine className={this.props.main.isGraphEnabled ? 'enabled' : 'disabled'} onClick={() => this.handleGraph()}>
+                <p>GRAPH</p>
+                </OutDine>
+            </ToggleWrapper>
+            {this.props.main.isPieChartEnabled &&
                 <PieChart
                 data={[
                     { title: 'Milk', value: this.props.items.milkSum, color: '#48B19E' },
@@ -29,6 +38,7 @@ class FoodGroupList extends React.Component {
                     { title: 'Meat', value: this.props.items.meatSum, color: '#EB5757' },
                 ]}
             />
+            }
             </StatsWrapper>
             <ListWrapper>
             <Card>
