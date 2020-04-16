@@ -29,7 +29,7 @@ class InfoScreen extends React.Component {
                 {this.props.main.outDineEnabled &&
                     <FoodData>
                         <h4>Name: {this.props.items.outDiningList[this.props.items.selectedIndex]}</h4>
-                        <h4>Date: {this.props.field.inDineDate[this.props.items.selectedIndex]}</h4>
+                        <h4>Date: {this.props.field.outDineDate[this.props.items.selectedIndex]}</h4>
                         <h4>Time: {this.props.field.outDineNameTimeStamp[this.props.items.selectedIndex]}</h4>
                         <h4>Quantity: {this.props.field.outDineQuantity[this.props.items.selectedIndex]} {this.props.field.outDineUnit[this.props.items.selectedIndex]}</h4>
                     </FoodData>
