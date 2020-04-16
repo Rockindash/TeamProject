@@ -1,5 +1,7 @@
 const fieldsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
+    inDineDate: [],
+    outDineDate: [],
     inDineNameTimeStamp: [],
     outDineNameTimeStamp: [],
     currentDate: '',
@@ -25,6 +27,18 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                 quantity: action.payload[0].quantity
             }
             break;
+        case "inDineItemDate":
+            state = {
+                ...state,
+                inDineDate: state.inDineDate.concat(action.payload)
+            };
+            break;
+        case "outDineItemDate":
+            state = {
+                ...state,
+                outDineDate: state.outDineDate.concat(action.payload)
+            };
+            break;
         case "inDineTime":
             state = {
                 ...state,
@@ -36,6 +50,14 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                 ...state,
                 outDineNameTimeStamp: state.outDineNameTimeStamp.concat(action.payload)
             };
+            break;
+        case "removeInDineDate":
+            return {...state,
+                inDineDate: [
+                    ...state.inDineDate.slice(0, action.payload),
+                    ...state.inDineDate.slice(action.payload + 1)
+                  ]
+            }
             break;
         case "removeInDineTime":
             return {...state,
@@ -52,6 +74,14 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                 outDineNameTimeStamp: [
                     ...state.outDineNameTimeStamp.slice(0, action.payload),
                     ...state.outDineNameTimeStamp.slice(action.payload + 1)
+                  ]
+            }
+            break;
+        case "removeOutDineDate":
+            return {...state,
+                outDineDate: [
+                    ...state.outDineDate.slice(0, action.payload),
+                    ...state.outDineDate.slice(action.payload + 1)
                   ]
             }
             break;

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import NameDropdown from '../components/nameDropdown';
 import UnitDropdown from '../components/unitDropdown';
@@ -8,17 +10,34 @@ import UnitDropdown from '../components/unitDropdown';
 
 class InDiningForm extends React.Component {
 
+    state = {
+      startDate: new Date(),
+      currentDay: new Date().getDate(),
+      currentMonth: new Date().getMonth(),
+      currentYear: new Date().getFullYear()
+    };
+
+    handleChange = date => {
+      this.setState({
+        startDate: date
+      });
+    };
+
     closeForm = () => {
         this.props.handleForm(false)
     };
 
     handleAdd = e => {
-        this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
-        this.props.addTime(this.props.field.currentDate)
-        this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])
-        this.props.addQuantity(this.props.field.quantity)
-        this.props.addSelectedState(false)
-        this.props.handleForm(false)
+      let dateFormat = `${this.state.startDate.getMonth()+1}/${this.state.startDate.getDate()}/${this.state.startDate.getFullYear()}`
+      let timeFormat = `${this.state.startDate.getHours()}:${this.state.startDate.getMinutes()}`
+
+      this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
+      this.props.addDate(dateFormat)
+      this.props.addTime(timeFormat)
+      this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])	
+      this.props.addQuantity(this.props.field.quantity)  
+      this.props.addSelectedState(false)
+      this.props.handleForm(false)  
     };
 
     handleQuantity = e => {
@@ -36,8 +55,20 @@ class InDiningForm extends React.Component {
               <h2>(In Dining)</h2>
               
               <TimeWrapper>
-                  <h1>Time</h1>
-                  <DropdownWrapperTime><p>{this.props.field.currentDate}</p></DropdownWrapperTime>
+                  <h1>Date</h1>
+                  <DropdownWrapperTime>
+                    <p>
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={date => this.handleChange(date)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                      />
+                    </p>
+                  </DropdownWrapperTime>
               </TimeWrapper>
               <QuantityWrapper>
                   <h1>Quantity</h1>
@@ -80,6 +111,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: 'form',
         payload: isEnabled,
+      });
+    },
+    addDate: date => {
+      dispatch({
+          type: 'inDineItemDate',
+          payload: date,
       });
     },
     addItem: items => {
@@ -273,6 +310,7 @@ const DropdownWrapperTime = styled.div`
   position: absolute;
   width: 400px;
   height: 40px;
+  z-index: 95;
   border-radius: 5px;
   margin-top: 250px;
   border: 2px solid black;
@@ -285,6 +323,9 @@ const DropdownWrapperTime = styled.div`
     font-weight: bold;
     font-family: Arial;
     color: black;
+  }
+  input{
+    border: none;
   }
 `;
 
