@@ -1,5 +1,7 @@
 const fieldsInitialState = {
     inDineName: ["Rice","Milk","Chicken","Oats","Carrot","Cheese","Apple","Pasta","Fish","Banana"],
+    inDineDate: [],
+    outDineDate: [],
     inDineNameTimeStamp: [],
     outDineNameTimeStamp: [],
     currentDate: '',
@@ -24,6 +26,18 @@ const fieldsReducer = (state = fieldsInitialState, action) => {
                 outDineQuantity: action.payload[0].outDineQuantity,
                 quantity: action.payload[0].quantity
             }
+            break;
+        case "inDineItemDate":
+            state = {
+                ...state,
+                inDineDate: state.inDineDate.concat(action.payload)
+            };
+            break;
+        case "outDineItemDate":
+            state = {
+                ...state,
+                outDineDate: state.outDineDate.concat(action.payload)
+            };
             break;
         case "inDineTime":
             state = {
