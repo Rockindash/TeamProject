@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import NameDropdown from '../components/nameDropdown';
 import UnitDropdown from '../components/unitDropdown';
