@@ -29,9 +29,11 @@ class OutDiningForm extends React.Component {
 
     handleAdd = e => {
       let dateFormat = `${this.state.startDate.getMonth()+1}/${this.state.startDate.getDate()}/${this.state.startDate.getFullYear()}`
+      let timeFormat = `${this.state.startDate.getHours()}:${this.state.startDate.getMinutes()}`
 
       this.props.addItem(this.props.field.inDineName[this.props.items.selectedIndex])
       this.props.addDate(dateFormat)
+      this.props.addTime(timeFormat)
       this.props.addUnit(this.props.items.unitName[this.props.items.selectedUnitIndex])	
       this.props.addQuantity(this.props.field.quantity)  
       this.props.addSelectedState(false)
@@ -57,7 +59,12 @@ class OutDiningForm extends React.Component {
                     <p>
                       <DatePicker
                         selected={this.state.startDate}
-                        onChange={this.handleChange}
+                        onChange={date => this.handleChange(date)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:mm aa"
                       />
                     </p>
                   </DropdownWrapperTime>
