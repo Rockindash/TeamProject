@@ -21,9 +21,18 @@ app.get("/", (req, res) => {
   res.json({ msg: "this is a temporary server" })
 })
 // Initialize server on port 5000
+<<<<<<< HEAD
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}...`);
+});
+
+module.exports = app
+=======
 const port = process.env.PORT || 5000
 var server = app.listen(port, () => {
   console.log(`Server started on port ${port}...`)
 })
 
 module.exports = server
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244

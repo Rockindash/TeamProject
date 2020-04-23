@@ -1,15 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
+=======
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
 
 import NameDropdown from '../components/nameDropdown';
 import UnitDropdown from '../components/unitDropdown';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 class InDiningForm extends React.Component {
 
+<<<<<<< HEAD
+    closeForm = () => {
+        this.props.handleForm(false)
+    };
+
+
+
+    //calender functions
+    //==============================
+    state = {
+      startDate: new Date()
+    };
+  
+=======
     state = {
       startDate: new Date(),
       currentDay: new Date().getDate(),
@@ -17,11 +36,16 @@ class InDiningForm extends React.Component {
       currentYear: new Date().getFullYear()
     };
 
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
     handleChange = date => {
       this.setState({
         startDate: date
       });
     };
+<<<<<<< HEAD
+//==============================
+=======
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
 
     closeForm = () => {
         this.props.handleForm(false)
@@ -57,17 +81,32 @@ class InDiningForm extends React.Component {
               <TimeWrapper>
                   <h1>Date</h1>
                   <DropdownWrapperTime>
+<<<<<<< HEAD
+                    {/* <DatePicker
+                    selected={this.state.date}
+                    onChange={this.handleChange}
+                    showTimeSelect
+                    dateFormat="Pp"
+                  /> */}
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={this.handleChange}
+=======
                     <p>
                       <DatePicker
                         selected={this.state.startDate}
                         onChange={date => this.handleChange(date)}
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
                         showTimeSelect
                         timeFormat="HH:mm"
                         timeIntervals={15}
                         timeCaption="time"
                         dateFormat="MMMM d, yyyy h:mm aa"
                       />
+<<<<<<< HEAD
+=======
                     </p>
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
                   </DropdownWrapperTime>
               </TimeWrapper>
               <QuantityWrapper>

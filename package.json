@@ -23,8 +23,11 @@
     "mongoose": "^5.9.6",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+<<<<<<< HEAD
+=======
     "react-apexcharts": "^1.3.7",
     "react-charts": "^2.0.0-beta.6",
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
     "react-datepicker": "^2.14.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
@@ -55,7 +58,11 @@
     "react-start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+<<<<<<< HEAD
+    "test": "jest",
+=======
     "test": "jest tests/routes.test.js",
+>>>>>>> 25f50448582f35e1e05cdda91758f3937adb0244
     "electron-build": "electron-builder",
     "build": "npm run react-build && npm run electron-build",
     "server": "node server.js",
