@@ -55,7 +55,8 @@ const itemsReducer = (state = itemsInitialState, action) => {
                 grainSum: action.payload[0].grainSum,
                 vegGroupUnit: action.payload[0].vegGroupUnit,
                 meatSum: action.payload[0].meatSum
-            }
+            };
+            break;
         case "inDineName":
             state = {
                 ...state,

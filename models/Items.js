@@ -3,6 +3,38 @@ const Schema = mongoose.Schema;
 
 // Design the schema
 const ItemSchema = new Schema({
+  inDineNameTimeStamp: {
+    type: Array,
+    required: true
+  },
+  outDineNameTimeStamp: {
+    type: Array,
+    required: true
+  },
+  currentDate: {
+    type: String,
+    required: true
+  },
+  inDineUnit: {
+    type: Array,
+    required: true
+  },
+  outDineUnit: {
+    type: Array,
+    required: true
+  },
+  inDineQuantity: {
+    type: Array,
+    required: true
+  },
+  outDineQuantity: {
+    type: Array,
+    required: true
+  },
+  quantity: {
+    type: Number,
+    required: true
+  },
   inDiningList: {
     type: Array,
     required: true
