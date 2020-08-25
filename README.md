@@ -32,13 +32,13 @@ REST API using:
 - Automatically calculate calorie/nutrition intake
 - Sort consumed food item into groups
 - Synchronize data with database using a REST api
+<br>
+<br>
 
-<br>
-<br>
 ### Software architecture overview
 <p align="center">
   <a href="">
-    <img width="700" height="390" src="/doc/architechture.png">
+    <img width="700" height="375" src="/doc/architechture.png">
   </a>
 </p>
 <br>
@@ -46,7 +46,7 @@ REST API using:
 ### Use case diagram
 <p align="center">
   <a href="">
-    <img height="650" width="400" src="/doc/usecase.png">
+    <img height="630" width="400" src="/doc/usecase.png">
   </a>
 </p>
 <br>
@@ -54,7 +54,7 @@ REST API using:
 ### Activity diagram
 <p align="center">
   <a href="">
-    <img height="750" width="440" src="/doc/activitydiagram.bmp">
+    <img height="740" width="440" src="/doc/activitydiagram.bmp">
   </a>
 </p>
 <br>
@@ -62,19 +62,13 @@ REST API using:
 # User interface snapshots
 <p align="center">
   <a href="">
-    <img width="720" height="400" src="/doc/additems_ui.png">
+    <img width="710" height="380" src="/doc/additems_ui.png">
   </a>
 </p>
 <br>
 <p align="center">
   <a href="">
-    <img width="720" height="400" src="/doc/activitydiagram.bmp">
-  </a>
-</p>
-<br>
-<p align="center">
-  <a href="">
-    <img width="720" height="400" src="/doc/activitydiagram.bmp">
+    <img width="710" height="380" src="/doc/foodgroups_ui.png">
   </a>
 </p>
 <br>
